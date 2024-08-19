@@ -19,7 +19,7 @@ RUN npm run build --omit=dev
 FROM nginx:alpine
 
 # Copiar los archivos construidos desde la etapa 1
-COPY --from=build /app/dist/tp-pruscino/browser /usr/share/nginx/html
+COPY --from=build /app/dist/app/browser /usr/share/nginx/html
 
 # Copiar el archivo de configuración de Nginx
 COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
