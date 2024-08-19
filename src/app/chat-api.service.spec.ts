@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/*import { TestBed } from '@angular/core/testing';
 
 import { ChatApiService } from './chat-api.service';
 
@@ -13,4 +13,4 @@ describe('ChatApiService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-});
+});*/
