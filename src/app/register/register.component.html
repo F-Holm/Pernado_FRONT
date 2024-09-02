@@ -1,0 +1,124 @@
+<form [formGroup]="registerForm" (ngSubmit)="agregarUsuario()" class="custom-form">
+  <h1>Regístrate</h1>
+
+  <!-- Nombre y Apellido -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="nombre" formControlName="nombre" placeholder="Nombre" />
+      <div *ngIf="registerForm.get('nombre')?.touched && registerForm.get('nombre')?.invalid">
+        <small *ngIf="registerForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <input id="lastname" formControlName="lastname" placeholder="Apellido" />
+      <div *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.invalid">
+        <small *ngIf="registerForm.get('lastname')?.errors?.['required']">El apellido es obligatorio.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <input id="email" formControlName="email" placeholder="Email" />
+    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">El correo electrónico es obligatorio.</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Introduce una dirección de correo electrónico válida.</small>
+    </div>
+  </div>
+
+  <!-- Password y Confirm Password -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="password" type="password" formControlName="password" placeholder="Password" />
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        <small *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+      <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+        <small *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirma tu contraseña.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- DNI y Teléfono -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="dni" type="number" formControlName="dni" placeholder="DNI" />
+      <div *ngIf="registerForm.get('dni')?.touched && registerForm.get('dni')?.invalid">
+        <small *ngIf="registerForm.get('dni')?.errors?.['required']">El DNI es obligatorio.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <input id="telefono" type="number" formControlName="telefono" placeholder="Teléfono" />
+      <div *ngIf="registerForm.get('telefono')?.touched && registerForm.get('telefono')?.invalid">
+        <small *ngIf="registerForm.get('telefono')?.errors?.['required']">El teléfono es obligatorio.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nombre de Usuario -->
+  <div>
+    <input id="nombreUsuario" formControlName="nombreUsuario" placeholder="Nombre de Usuario" />
+    <div *ngIf="registerForm.get('nombreUsuario')?.touched && registerForm.get('nombreUsuario')?.invalid">
+      <small *ngIf="registerForm.get('nombreUsuario')?.errors?.['required']">El nombre de usuario es obligatorio.</small>
+    </div>
+  </div>
+
+  <!-- Fecha de Nacimiento -->
+  <div>
+    <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" placeholder="Fecha de Nacimiento" />
+    <div *ngIf="registerForm.get('fechaNacimiento')?.touched && registerForm.get('fechaNacimiento')?.invalid">
+      <small *ngIf="registerForm.get('fechaNacimiento')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
+    </div>
+  </div>
+
+  <!-- Provincia y Ciudad -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="provincia" formControlName="provincia" placeholder="Provincia" />
+      <div *ngIf="registerForm.get('provincia')?.touched && registerForm.get('provincia')?.invalid">
+        <small *ngIf="registerForm.get('provincia')?.errors?.['required']">La provincia es obligatoria.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <input id="ciudad" formControlName="ciudad" placeholder="Ciudad" />
+      <div *ngIf="registerForm.get('ciudad')?.touched && registerForm.get('ciudad')?.invalid">
+        <small *ngIf="registerForm.get('ciudad')?.errors?.['required']">La ciudad es obligatoria.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calle y Número -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="calle" formControlName="calle" placeholder="Calle" />
+      <div *ngIf="registerForm.get('calle')?.touched && registerForm.get('calle')?.invalid">
+        <small *ngIf="registerForm.get('calle')?.errors?.['required']">La calle es obligatoria.</small>
+      </div>
+    </div>
+    <div class="form-field">
+      <input id="numero" type="number" formControlName="numero" placeholder="Número" />
+      <div *ngIf="registerForm.get('numero')?.touched && registerForm.get('numero')?.invalid">
+        <small *ngIf="registerForm.get('numero')?.errors?.['required']">El número es obligatorio.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Piso y Departamento -->
+  <div class="form-group">
+    <div class="form-field">
+      <input id="piso" type="number" formControlName="piso" placeholder="Piso" />
+    </div>
+    <div class="form-field">
+      <input id="departamento" formControlName="departamento" placeholder="Departamento" />
+    </div>
+  </div>
+  
+  <!-- Código Postal -->
+  <div>
+    <input id="codigoPostal" formControlName="codigoPostal" placeholder="Código Postal" />
+  </div>
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
