@@ -1,0 +1,76 @@
+/* Establece el box-sizing para todos los elementos */
+* {
+  box-sizing: border-box;
+}
+
+/* Configuración del fondo de la página */
+html,
+body {
+  background: #ecf0f3;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo del formulario */
+.custom-form {
+  min-width: 300px;
+  max-width: 60%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem 3rem;
+  border-radius: 2.5rem;
+  background-color: #ecf0f3;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  color: black;
+  margin-top: 2%;
+}
+
+/* Contenedor para los campos en línea */
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* Estilo de los campos de entrada */
+.custom-form input {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
+  background: #ebf5fc;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+/* Estilo del botón de envío */
+.custom-form button {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: rgb(52, 119, 52);
+  width: 100%;
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  cursor: pointer;
+}
+
+/* Agrega estilos para el enfoque de los campos de entrada */
+.custom-form input:focus {
+  outline: none;
+  border: 2px solid #bcd8c1;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los campos de entrada en línea */
+.form-group .form-field {
+  flex: 1;
+}
