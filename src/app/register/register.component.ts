@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
-import { IDireccion } from '../../models/direccion.model';
-import { IUsuario } from '../../models/usuario.model';
+import { IDireccion } from '../../models/Direccion.model';
+import { IUsuario } from '../../models/Usuario.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
