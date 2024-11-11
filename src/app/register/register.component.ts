@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { IDireccion } from '../../models/Direccion.model';
+import { IUsuario } from '../../models/Usuario.model';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { UsuarioApiService } from '../usuario-api.service';
-import { Router } from '@angular/router';
-import { IUsuario } from '../../models/Usuario';
-import { IDireccion } from '../../models/Direccion';
 import {  HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -98,7 +97,7 @@ export class RegisterComponent {
         direccion
       };
         console.log(usuario);
-      this.usuarioService.postUsuarios(usuario).subscribe(
+      this.usuarioService.postUsuario(usuario).subscribe(
         (response: any) => {
           this.router.navigateByUrl('/login');
           console.log('Usuario agregado con éxito');

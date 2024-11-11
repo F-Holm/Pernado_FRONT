@@ -22,18 +22,15 @@ export class UsuarioApiService {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
   
-  postUsuarios(usuario: IUsuario): any {
-    const body =  this.toJSONString(usuario); 
-    console.log(body);
-    console.log(Usuario.isUsuario({"usuario": usuario}));
-    return this.http.post<any>(this.BASE_URL,{"usuario": usuario} );
+  postUsuario(usuario: IUsuario): any {
+    return this.http.post<any>(this.BASE_URL, this.toJSONString(usuario));
   }
   
-  putusuarios(usuario: IUsuario): any {
+  putUsuario(usuario: IUsuario): any {
     return (this.http.put<any>(this.BASE_URL, this.toJSONString(usuario)));
   }
 
-  deleteChats(id: number): any {
+  deleteUsuario(id: number): any {
     return (this.http.delete<any>(this.BASE_URL + "/" + id));
   }
 }
