@@ -4,7 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { AgregarcasaComponent } from './agregarcasa/agregarcasa.component';
 
 export const routes: Routes = [
-    { path: "", component: LoginComponent, pathMatch: "full" },
+    { path: "login", component: LoginComponent, pathMatch: "full" },
     { path: "register", component: RegisterComponent, pathMatch: "full" },
     {path:"agregarCasas", component:AgregarcasaComponent,pathMatch:"full"}
 ];

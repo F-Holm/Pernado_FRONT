@@ -5,24 +5,24 @@ import { UsuarioService } from '../usuario.service';
 import { IDireccion } from '../../models/Direccion.model';
 import { IUsuario } from '../../models/Usuario.model';
 import { CommonModule } from '@angular/common';
+import { UsuarioApiService } from '../usuario-api.service';
+import {  HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
+  imports: [ ReactiveFormsModule,
     CommonModule,
-    RouterModule
-  ],
+    RouterModule,HttpClientModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
   registerForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private usuarioService: UsuarioService,
+    private usuarioService: UsuarioApiService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -98,12 +98,12 @@ export class RegisterComponent {
         direccion
       };
         console.log(usuario);
-      this.usuarioService.agregarUsuario(usuario).subscribe(
-        response => {
-          this.router.navigateByUrl('/');
+      this.usuarioService.postUsuarios(usuario).subscribe(
+        (response: any) => {
+          this.router.navigateByUrl('/login');
           console.log('Usuario agregado con éxito');
         },
-        error => {
+        (error: any) => {
           console.error('Error al agregar usuario', error);
         }
       );
