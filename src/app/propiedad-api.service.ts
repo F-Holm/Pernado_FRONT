@@ -23,7 +23,7 @@ export class PropiedadApiService {
   }
   
   postPropiedad(propiedad: IPropiedad): any {
-    return (this.http.post<any>(this.BASE_URL, this.toJSONString(propiedad)));
+    return (this.http.post<any>(this.BASE_URL, {"propiedad" : propiedad}));
   }
 
   putPropiedad(propiedad: IPropiedad): any {
