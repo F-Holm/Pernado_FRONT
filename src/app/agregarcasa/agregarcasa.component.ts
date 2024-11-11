@@ -3,7 +3,9 @@
   import { TipoPropiedad } from '../../models/TipoPropiedad.model';
   import { CommonModule } from '@angular/common';
   import { Router, RouterModule } from '@angular/router';
-  import { PropiedadService } from '../Casa.service';
+  import { PropiedadApiService } from '../propiedad-api.service';
+  import { HttpErrorResponse } from '@angular/common/http';
+  
   @Component({
     selector: 'app-agregarcasa',
     standalone: true,
@@ -19,7 +21,7 @@
     selectedImages: string[] = [];
     
     constructor(private fb: FormBuilder,
-      private propiedadService: PropiedadService,
+      private propiedadService: PropiedadApiService,
       private router: Router) { }
 
     ngOnInit() {
@@ -65,12 +67,12 @@
 
     onSubmit() {
       if (this.propiedadForm.valid) {
-        this.propiedadService.agregarPropiedad(this.propiedadForm.value).subscribe(
-          response => {
+        this.propiedadService.postPropiedad(this.propiedadForm.value).subscribe(
+          () => {
             this.router.navigateByUrl('/');
             console.log('Usuario agregado con éxito');
           },
-          error => {
+          (error: HttpErrorResponse) => {
             console.error('Error al agregar usuario', error);
           }
         );
@@ -78,8 +80,6 @@
         console.log('Formulario inválido');
         this.propiedadForm.markAllAsTouched();
       }
-      
-    
     }
   }
 

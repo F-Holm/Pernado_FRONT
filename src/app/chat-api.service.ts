@@ -22,15 +22,15 @@ export class ChatApiService {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
   
-  postChats(chat: IChat): any {
+  postChat(chat: IChat): any {
     return (this.http.post<any>(this.BASE_URL, this.toJSONString(chat)));
   }
 
-  putChats(chat: IChat): any {
+  putChat(chat: IChat): any {
     return (this.http.put<any>(this.BASE_URL, this.toJSONString(chat)));
   }
 
-  deleteChats(id: number): any {
+  deleteChat(id: number): any {
     return (this.http.delete<any>(this.BASE_URL + "/" + id));
   }
 }
