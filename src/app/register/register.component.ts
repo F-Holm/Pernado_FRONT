@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { IDireccion } from '../../models/Direccion.model';
 import { IUsuario } from '../../models/Usuario.model';
 import { CommonModule } from '@angular/common';
-import { UsuarioApiService } from '../usuario-api.service';
+import { UsuarioApiService } from '../services/usuario-api.service';
 import {  HttpClientModule } from '@angular/common/http';
 
 @Component({

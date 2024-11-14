@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../auth-api.service';
+import { AuthService } from '../services/auth-api.service';
 
 @Component({
   selector: 'app-login',

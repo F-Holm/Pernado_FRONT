@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IPropiedad } from '../../models/Propiedad.model';
+import { PropiedadApiService } from '../services/propiedad-api.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,5 +10,9 @@ import { Component } from '@angular/core';
   styleUrl: './catalogo.component.css'
 })
 export class CatalogoComponent {
-
+  propiedades: IPropiedad[] = [];
+  constructor( private servicio: PropiedadApiService ) {}
+  ngOnInit(){
+    this.servicio.getPropiedades().subscribe( (p: { propiedades: IPropiedad[]; }) => this.propiedades = p.propiedades);
+  }
 }
