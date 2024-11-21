@@ -87,7 +87,7 @@ export class RegisterComponent {
       const usuario: IUsuario = {
         id: -1,
         dni,
-        mail: email,
+        email: email,
         telefono,
         nombre,
         apellido: lastname,
