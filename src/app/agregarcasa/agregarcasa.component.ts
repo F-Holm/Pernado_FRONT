@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TipoPropiedad } from '../../models/TipoPropiedad.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { PropiedadApiService } from '../propiedad-api.service';
+import { PropiedadApiService } from '../services/propiedad-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
