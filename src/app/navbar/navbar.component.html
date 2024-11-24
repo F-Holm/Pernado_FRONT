@@ -1,0 +1,14 @@
+<nav>
+  <ul>
+    <button (click)="inicio()">Inicio</button>
+    <div *ngIf="!logged">
+      <button (click)="login()">Login</button>
+      <button>Register</button>
+    </div>
+    <div *ngIf="logged">
+      <button (click)="argegarCasa()">Agregar Propiedad</button>
+      <button (click)="miCuenta()">Mi Cuenta</button>
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+  </ul>
+</nav>
