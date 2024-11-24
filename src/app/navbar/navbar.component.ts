@@ -36,6 +36,6 @@ export class NavbarComponent {
   }
 
   public argegarCasa(): void{
-    this.router.navigate(['/agregarCasa']);
+    this.router.navigate(['/agregarPropiedad']);
   }
 }
