@@ -43,11 +43,12 @@ export class LoginComponent {
       console.log('Formulario inválido');
       this.formLog.markAllAsTouched();
     }
-    
+
     this.servicio.logUser(this.formLog.get('mail')?.value, this.formLog.get('contra')?.value).subscribe((res: any) => {
       localStorage.setItem('token', res.token);
-      this.router.navigateByUrl('/');
+      location.reload();
+      //this.router.navigateByUrl('/');
     });
   }
-  
+
 }
