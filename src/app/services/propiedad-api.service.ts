@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { IPropiedad } from '../../models/Propiedad.model';
+import { IPropiedad } from '../../models/Propiedad';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,11 @@ export class PropiedadApiService {
   getPropiedades(): any {
     return (this.http.get<any>(this.BASE_URL));
   }
-  
+
   getPropiedad(id: number): any {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
-  
+
   postPropiedad(propiedad: IPropiedad): any {
     return (this.http.post<any>(this.BASE_URL, {"propiedad" : propiedad}));
   }

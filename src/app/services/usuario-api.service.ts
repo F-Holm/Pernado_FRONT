@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import Usuario, { IUsuario } from '../../models/Usuario.model';
+import Usuario, { IUsuario } from '../../models/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +17,15 @@ export class UsuarioApiService {
   getUsuarios(): any {
     return (this.http.get<any>(this.BASE_URL));
   }
-  
+
   getUsuario(id: number): any {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
-  
+
   postUsuario(usuario: IUsuario): any {
     return this.http.post<any>(this.BASE_URL, {"usuario" : usuario});
   }
-  
+
   putUsuario(usuario: IUsuario): any {
     return (this.http.put<any>(this.BASE_URL, this.toJSONString(usuario)));
   }

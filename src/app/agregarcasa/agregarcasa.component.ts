@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TipoPropiedad } from '../../models/TipoPropiedad.model';
+import { TipoPropiedad } from '../../models/TipoPropiedad';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PropiedadApiService } from '../services/propiedad-api.service';

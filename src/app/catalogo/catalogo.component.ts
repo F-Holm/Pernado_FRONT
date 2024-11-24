@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IPropiedad } from '../../models/Propiedad.model';
+import { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
 
 @Component({
