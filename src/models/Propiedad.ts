@@ -1,7 +1,7 @@
 import { TipoPropiedad } from './TipoPropiedad';
 import Caracteristicas, { ICaracteristicas } from './Caracteristicas';
-import Direccion, {IDireccion} from '@src/models/Direccion';
-import Pregunta, {IPregunta} from '@src/models/Pregunta';
+import Direccion, {IDireccion} from './Direccion';
+import Pregunta, {IPregunta} from './Pregunta';
 
 
 // **** Variables **** //
