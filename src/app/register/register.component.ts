@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { IDireccion } from '../../models/Direccion.model';
-import { IUsuario } from '../../models/Usuario.model';
+import { IDireccion } from '../../models/Direccion';
+import { IUsuario } from '../../models/Usuario';
 import { CommonModule } from '@angular/common';
 import { UsuarioApiService } from '../services/usuario-api.service';
 import {  HttpClientModule } from '@angular/common/http';
