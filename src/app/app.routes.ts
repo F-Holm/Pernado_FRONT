@@ -6,6 +6,7 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import {AuthGuard, AuthGuardLogged} from "./services/auth.guard";
 import {MiCuentaComponent} from "./mi-cuenta/mi-cuenta.component";
 import {CasaComponent} from "./casa/casa.component";
+import { CasaCatalogoComponent } from './casa-catalogo/casa-catalogo.component';
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full", canActivate: [AuthGuardLogged] },
@@ -14,6 +15,5 @@ export const routes: Routes = [
   { path: "", component:CatalogoComponent,pathMatch:"full" },
   { path: "mi-cuenta", component:MiCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "propiedad/:id", component:CasaComponent,pathMatch:"full" },
-  { path: "catalogo", component:CatalogoComponent,pathMatch:"full"},
   { path: "casaCatalogo/:id", component:CasaCatalogoComponent,pathMatch:"full"},
 ];

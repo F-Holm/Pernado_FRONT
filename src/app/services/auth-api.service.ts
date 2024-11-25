@@ -33,6 +33,13 @@ export class AuthService {
     }
   }
 
+  getToken(){
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem('token');
+    }
+    return null;
+  }
+
   logUser(email: string, contrasenia: string): Observable<any> {
     return this.http.post(`${this.BASE_URL}`, JSON.stringify({email, contrasenia}), this.httpOptions);
   }

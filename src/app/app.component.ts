@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
 import {NavbarComponent} from "./navbar/navbar.component";
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CatalogoComponent } from './catalogo/catalogo.component';

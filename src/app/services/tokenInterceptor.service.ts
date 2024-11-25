@@ -8,8 +8,18 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem("token");
     
+    var token;
+
+    if (typeof window !== 'undefined' && window.localStorage) {
+      token = localStorage.getItem('token');
+      // Otras operaciones que dependan de localStorage
+    } else {
+      console.log("dfuhjfodijfs");
+      return next.handle(req);
+    }
+    console.log(token);
+
     let duplicate = req;
 
     if (token) {
