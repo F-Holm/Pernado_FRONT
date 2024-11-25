@@ -1,1 +1,19 @@
-<div *ngFor="let propiedad of propiedades"></div>
+<div class="catalogo" *ngFor="let propiedad of propiedades">
+    <div class="catalog-card">
+      <img [src]="(propiedad.imagenes && propiedad.imagenes.length > 0) ? propiedad.imagenes[0] : defaultImage" alt="Imagen propiedad">
+      <div class="info">
+        <h2>{{ propiedad.titulo }}</h2>
+        <p>{{ propiedad.ubicacion || 'No especificada' }}</p>
+        <p><strong>Precio:</strong> ${{ propiedad.precio }}</p>
+        <ul>
+          <li><strong>Ambientes:</strong> {{ propiedad.caracteristicas.cantidadAmbientes }}</li>
+          <li><strong>Dormitorios:</strong> {{ propiedad.caracteristicas.cantidadDormitorios }}</li>
+          <li><strong>Baños:</strong> {{ propiedad.caracteristicas.cantidadBanios }}</li>
+          <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
+        </ul>
+        <button [routerLink]="['/casaCatalogo', propiedad.id]" class="btn btn-primary">
+          Más Información
+        </button>
+      </div>
+    </div>
+  </div>

@@ -14,4 +14,6 @@ export const routes: Routes = [
   { path: "", component:CatalogoComponent,pathMatch:"full" },
   { path: "mi-cuenta", component:MiCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "propiedad/:id", component:CasaComponent,pathMatch:"full" },
+  { path: "catalogo", component:CatalogoComponent,pathMatch:"full"},
+  { path: "casaCatalogo/:id", component:CasaCatalogoComponent,pathMatch:"full"},
 ];
