@@ -85,33 +85,31 @@ export class AgregarcasaComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    // Obtener el tipo de propiedad seleccionada (cadena)
-    const tipoPropiedadSeleccionado: TipoPropiedad = this.propiedadForm.value.tipoPropiedad;
-
-    // Usamos el mapeo para obtener el valor numérico correspondiente
-    const tipoPropiedadNumerico = this.tipoPropiedadMap[tipoPropiedadSeleccionado];
-
-    const propiedadData = {
-      ...this.propiedadForm.value,
-      tipoPropiedad: tipoPropiedadNumerico // Convertimos el nombre a número
-    };
-
-    console.log(propiedadData);
-
-    if (this.propiedadForm.valid) {
-      this.propiedadService.postPropiedad(propiedadData).subscribe(
-        () => {
-          this.router.navigateByUrl('/');
-          console.log('Propiedad agregada con éxito');
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Error al agregar propiedad', error);
-        }
-      );
-    } else {
-      console.log('Formulario inválido');
-      this.propiedadForm.markAllAsTouched();
+ 
+    onSubmit() {
+      const propiedadData = {
+        ...this.propiedadForm.value,
+        id: -1, // ID estático
+        imagenes: null, // Siempre null
+        preguntas: null, // Siempre null
+      };
+    
+      console.log('Datos de la Propiedad:', propiedadData);
+    
+      if (this.propiedadForm.valid) {
+        this.propiedadService.postPropiedad(propiedadData).subscribe(
+          () => {
+            this.router.navigateByUrl('/');
+            console.log('Propiedad agregada con éxito');
+          },
+          (error: HttpErrorResponse) => {
+            console.error('Error al agregar propiedad', error);
+          }
+        );
+      } else {
+        console.log('Formulario inválido');
+        this.propiedadForm.markAllAsTouched();
+      }
     }
-  }
+  
 }

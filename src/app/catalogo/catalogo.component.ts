@@ -1,19 +1,39 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './catalogo.component.html',
-  styleUrl: './catalogo.component.css'
+  styleUrls: ['./catalogo.component.css']
 })
-export class CatalogoComponent {
+export class CatalogoComponent implements OnInit {
   propiedades: IPropiedad[] = [];
-  constructor( private servicio: PropiedadApiService ) {}
-  ngOnInit(){
-    this.servicio.getPropiedades().subscribe( (p: { propiedades: IPropiedad[]; }) => this.propiedades = p.propiedades);
+  defaultImage: string = 'assets/image.png'; // Ruta a la imagen por defecto
+
+  constructor(private propiedadService: PropiedadApiService) {}
+
+  ngOnInit() {
+    this.obtener();
   }
+
+  obtener() {
+    this.propiedadService.getPropiedades().subscribe(
+      (data: PropiedadesResponse) => {  // Usamos la interfaz `PropiedadesResponse`
+       
+        this.propiedades = Array.isArray(data.propiedades) ? data.propiedades : [];
+      },
+      (error: any) => {
+        console.error('Error al obtener propiedades:', error);
+      }
+    );
+  }
+  
+}
+interface PropiedadesResponse {
+  propiedades: IPropiedad[];
 }
