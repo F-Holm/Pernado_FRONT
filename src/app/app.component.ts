@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router';
+import {NavbarComponent} from "./navbar/navbar.component";
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,12 +18,13 @@ import { routes } from './app.routes';
     RouterOutlet,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule, // Aquí se incluyen las rutas
-    CatalogoComponent,  // Importa los componentes directamente
+    RouterModule,
+    CatalogoComponent,
     CasaCatalogoComponent,
     LoginComponent,
     RegisterComponent,
-    AgregarcasaComponent
+    AgregarcasaComponent,
+    NavbarComponent
   ], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

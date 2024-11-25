@@ -27,7 +27,6 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if(token){
       const data = atob(token.split('.')[1]);
-      console.log(data);
       return JSON.parse(data).data;
     } else {
       return null;
@@ -47,7 +46,8 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
+    location.reload();
   }
 
 }

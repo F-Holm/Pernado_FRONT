@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
+import {AuthService} from "../services/auth-api.service";
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 export class CatalogoComponent implements OnInit {
   propiedades: IPropiedad[] = [];
+
   defaultImage: string = 'assets/image.png'; // Ruta a la imagen por defecto
 
   constructor(private propiedadService: PropiedadApiService) {}
