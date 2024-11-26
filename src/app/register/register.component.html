@@ -59,7 +59,7 @@
     </div>
 
     <!-- Nombre de Usuario -->
-    <div>
+    <div class="form-field form-group" >
       <input id="nombreUsuario" formControlName="nombreUsuario" placeholder="Nombre de Usuario" />
       <div *ngIf="registerForm.get('nombreUsuario')?.touched && registerForm.get('nombreUsuario')?.invalid">
         <small *ngIf="registerForm.get('nombreUsuario')?.errors?.['required']">El nombre de usuario es obligatorio.</small>
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Fecha de Nacimiento -->
-    <div>
+    <div class="form-field form-group">
       <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" placeholder="Fecha de Nacimiento" />
       <div *ngIf="registerForm.get('fechaNacimiento')?.touched && registerForm.get('fechaNacimiento')?.invalid">
         <small *ngIf="registerForm.get('fechaNacimiento')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
@@ -89,27 +89,12 @@
         <label for="municipio">Municipio:</label>
         <select id="municipio" formControlName="municipio">
           <option *ngFor="let municipio of municipios" [value]="municipio">{{municipio}}</option>
-        </select> <div *ngIf="registerForm.get('municipio')?.touched && registerForm.get('municipio')?.invalid">
-        <small *ngIf="registerForm.get('municipio')?.errors?.['required']">El municipio es obligatorio.</small>
-      </div>
-    </div>
-    </div>
-
-    <!--<div class="form-group">
-      <div class="form-field">
-        <label for="provincia">Provincia:</label>
-        <select id="provincia" formControlName="provincia" placeholder="Provincia"></select>
-        <div *ngIf="registerForm.get('provincia')?.touched && registerForm.get('provincia')?.invalid">
-          <small *ngIf="registerForm.get('provincia')?.errors?.['required']">La provincia es obligatoria.</small>
-        </div>
-      </div>
-      <div class="form-field">
-        <input id="municipio" formControlName="municipio" placeholder="Municipio" />
+        </select>
         <div *ngIf="registerForm.get('municipio')?.touched && registerForm.get('municipio')?.invalid">
           <small *ngIf="registerForm.get('municipio')?.errors?.['required']">El municipio es obligatorio.</small>
         </div>
       </div>
-    </div>-->
+    </div>
 
     <!-- Dirección -->
     <div class="form-group">
@@ -118,6 +103,9 @@
         <div *ngIf="registerForm.get('direccion')?.touched && registerForm.get('direccion')?.invalid">
           <small *ngIf="registerForm.get('direccion')?.errors?.['required']">La dirección es obligatoria.</small>
         </div>
+      </div>
+      <div class="form-field">
+        <input id="piso_departamento" formControlName="piso_departamento" placeholder="Piso / Departamento" />
       </div>
     </div>
 

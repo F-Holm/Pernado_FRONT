@@ -1,0 +1,59 @@
+/* Estilos básicos para la navbar */
+.navbar {
+  background-color: #f8f9fa; /* Color claro para la navbar */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* Espaciado automático entre elementos */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Eliminar estilos predeterminados de la lista */
+.navbar-menu-left,
+.navbar-menu-right {
+  list-style: none; /* Elimina los círculos (estilo de lista) */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px; /* Espaciado entre botones */
+}
+
+/* Botón "Inicio" alineado a la izquierda */
+.navbar-menu-left {
+  margin-right: auto; /* Empuja los demás elementos hacia la derecha */
+}
+
+/* Estilo de los botones */
+.navbar-button {
+  background-color: #007bff; /* Azul atractivo */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Animación */
+}
+
+.navbar-button:hover {
+  background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Agrandar ligeramente */
+}
+
+.navbar-button:active {
+  background-color: #003f7f; /* Azul más oscuro al hacer clic */
+  transform: scale(0.95); /* Reducir ligeramente */
+}
+
+/* Mejora para dispositivos móviles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-menu-left,
+  .navbar-menu-right {
+    margin: 5px 0;
+  }
+}
+

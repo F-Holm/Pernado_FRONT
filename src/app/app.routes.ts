@@ -15,5 +15,4 @@ export const routes: Routes = [
   { path: "", component:CatalogoComponent,pathMatch:"full" },
   { path: "mi-cuenta", component:MiCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "propiedad/:id", component:PropiedadComponent,pathMatch:"full" },
-  { path: "mapa", component:MapaComponent,pathMatch:"full" },
 ];

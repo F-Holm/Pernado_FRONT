@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import moment from 'moment';
 import { IDireccion } from './Direccion';
 import Direccion from './Direccion';
@@ -58,6 +59,10 @@ function new_(
   };
 }
 
+function isAdmin(usuario: IUsuario): boolean {
+  return usuario.admin;
+}
+
 /**
  * Get user instance from object.
  */
@@ -97,4 +102,5 @@ export default {
   new: new_,
   from,
   isUsuario,
+  isAdmin,
 } as const;

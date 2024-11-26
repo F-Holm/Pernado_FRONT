@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet'
 import {LatLngExpression} from "leaflet";
@@ -13,11 +13,13 @@ import {LatLngExpression} from "leaflet";
 export class MapaComponent implements OnInit {
   aula: LatLngExpression = [-34.57297710502689, -58.50427617540819];
   private map!: L.Map;
+  @Input() direccion!: string;
 
   constructor() { }
 
   ngOnInit(): void {
     this.initMap();
+    this.searchAddress(this.direccion);
   }
 
   private initMap(): void {
