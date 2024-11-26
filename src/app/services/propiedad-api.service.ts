@@ -10,10 +10,6 @@ export class PropiedadApiService {
   constructor(private http: HttpClient){}
   private BASE_URL = "http://localhost:3000/api/propiedad";
 
-  toJSONString(propiedad: IPropiedad): string {
-    return "{ propiedad: " + JSON.stringify(propiedad) + "}";
-  }
-
   getPropiedades(): any {
     return (this.http.get<any>(this.BASE_URL));
   }
@@ -27,7 +23,7 @@ export class PropiedadApiService {
   }
 
   putPropiedad(propiedad: IPropiedad): any {
-    return (this.http.put<any>(this.BASE_URL, this.toJSONString(propiedad)));
+    return (this.http.put<any>(this.BASE_URL, { "propiedad" : propiedad }));
   }
 
   deletePropiedad(id: number): any {

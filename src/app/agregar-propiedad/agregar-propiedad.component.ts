@@ -7,15 +7,15 @@ import { PropiedadApiService } from '../services/propiedad-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-agregarcasa',
+  selector: 'app-agregar-propiedad',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterModule],
-  templateUrl: './agregarcasa.component.html',
-  styleUrls: ['./agregarcasa.component.css']
+  templateUrl: './agregar-propiedad.component.html',
+  styleUrls: ['./agregar-propiedad.component.css']
 })
-export class AgregarcasaComponent implements OnInit {
+export class AgregarPropiedadComponent implements OnInit {
   propiedadForm!: FormGroup;
-  tiposPropiedad = Object.values(TipoPropiedad); // Obtenemos los nombres de las propiedades para mostrar en el select
+  tiposPropiedad: TipoPropiedad[] = Object.values(TipoPropiedad);
   selectedImages: string[] = [];
 
   // Mapeo de los valores de tipo propiedad (nombre -> número)
@@ -46,13 +46,13 @@ export class AgregarcasaComponent implements OnInit {
 
   ngOnInit() {
     this.propiedadForm = this.fb.group({
-      tipoPropiedad: [TipoPropiedad.CASA, Validators.required], // Inicializa con 'Casa'
+      tipoPropiedad: [TipoPropiedad.CASA, Validators.required],
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      duenio: ['', Validators.required],
+      duenio: [''],
       precio: ['', Validators.required],
       alquiler: [false],
-      expensas: ['', Validators.required],
+      expensas: [0, Validators.required],
       imagenes: [[]],
       caracteristicas: this.fb.group({
         cantidadAmbientes: [0, Validators.required],
@@ -85,17 +85,18 @@ export class AgregarcasaComponent implements OnInit {
     }
   }
 
- 
+
     onSubmit() {
       const propiedadData = {
         ...this.propiedadForm.value,
-        id: -1, // ID estático
-        imagenes: null, // Siempre null
-        preguntas: null, // Siempre null
+        id: -1,
+        duenio: null,
+        imagenes: [],
+        preguntas: [],
       };
-    
+
       console.log('Datos de la Propiedad:', propiedadData);
-    
+
       if (this.propiedadForm.valid) {
         this.propiedadService.postPropiedad(propiedadData).subscribe(
           () => {
@@ -111,5 +112,5 @@ export class AgregarcasaComponent implements OnInit {
         this.propiedadForm.markAllAsTouched();
       }
     }
-  
+
 }

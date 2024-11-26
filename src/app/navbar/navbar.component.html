@@ -3,7 +3,7 @@
     <button (click)="inicio()">Inicio</button>
     <div *ngIf="!logged">
       <button (click)="login()">Login</button>
-      <button>Register</button>
+      <button (click)="register()">Register</button>
     </div>
     <div *ngIf="logged">
       <button (click)="argegarCasa()">Agregar Propiedad</button>

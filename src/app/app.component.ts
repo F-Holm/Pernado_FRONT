@@ -5,9 +5,9 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { RegisterComponent } from './register/register.component';
-import { AgregarcasaComponent } from './agregarcasa/agregarcasa.component';
+import { AgregarPropiedadComponent } from './agregar-propiedad/agregar-propiedad.component';
 import { LoginComponent } from './login/login.component';
-import { CasaCatalogoComponent } from './casa-catalogo/casa-catalogo.component';
+import { PropiedadComponent } from './propiedad/propiedad.component';
 import { routes } from './app.routes';
 
 @Component({
@@ -19,12 +19,12 @@ import { routes } from './app.routes';
     ReactiveFormsModule,
     RouterModule,
     CatalogoComponent,
-    CasaCatalogoComponent,
+    PropiedadComponent,
     LoginComponent,
     RegisterComponent,
-    AgregarcasaComponent,
+    AgregarPropiedadComponent,
     NavbarComponent
-  ], 
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

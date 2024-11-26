@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MiCuentaComponent } from './mi-cuenta.component';
+import { PropiedadComponent } from './propiedad.component';
 
-describe('MiCuentaComponent', () => {
-  let component: MiCuentaComponent;
-  let fixture: ComponentFixture<MiCuentaComponent>;
+describe('CasaCatalogoComponent', () => {
+  let component: PropiedadComponent;
+  let fixture: ComponentFixture<PropiedadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MiCuentaComponent]
+      imports: [PropiedadComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(MiCuentaComponent);
+
+    fixture = TestBed.createComponent(PropiedadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
