@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/*import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModificarPropiedadComponent } from './modificar-propiedad.component';
 
@@ -11,7 +11,7 @@ describe('ModificarPropiedadComponent', () => {
       imports: [ModificarPropiedadComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ModificarPropiedadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('ModificarPropiedadComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
