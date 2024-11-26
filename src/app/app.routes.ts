@@ -6,6 +6,8 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import {AuthGuard, AuthGuardLogged} from "./services/auth.guard";
 import {MiCuentaComponent} from "./mi-cuenta/mi-cuenta.component";
 import { PropiedadComponent } from './propiedad/propiedad.component';
+import {ModificarPropiedadComponent} from "./modificar-propiedad/modificar-propiedad.component";
+import {ModificarCuentaComponent} from "./modificar-cuenta/modificar-cuenta.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full", canActivate: [AuthGuardLogged] },
@@ -14,4 +16,6 @@ export const routes: Routes = [
   { path: "", component:CatalogoComponent,pathMatch:"full" },
   { path: "mi-cuenta", component:MiCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "propiedad/:id", component:PropiedadComponent,pathMatch:"full" },
+  { path: "modificarPropiedad/:id", component:ModificarPropiedadComponent,pathMatch:"full", canActivate: [AuthGuard] },
+  { path: "modificarCuenta/:id", component:ModificarCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
 ];
