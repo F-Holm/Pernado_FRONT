@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { IPropiedad } from '../../models/Propiedad';
 import {IFiltrosPropiedad} from "../../models/FiltrosPropiedad";
 
@@ -28,19 +28,23 @@ export class PropiedadApiService {
   }
 
   getPropiedadesLimitSkip(limit: number, skip: number): any {
-    return (this.http.get<any>(this.BASE_URL) + '/ls/' + limit + '/' + skip );
+    return (this.http.get<any>(this.BASE_URL + '/ls/' + limit + '/' + skip));
   }
 
   getPropiedadesFiltrosLimitSkip(filtrosPropiedad: IFiltrosPropiedad, limit: number, skip: number): any {
-    return (this.http.get<any>(this.BASE_URL) + 'fileterls/' + JSON.stringify(filtrosPropiedad) + '/' + limit + '/' + skip);
+    return (this.http.get<any>(this.BASE_URL + '/fileterls/' + JSON.stringify(filtrosPropiedad) + '/' + limit + '/' + skip));
   }
 
   getPropiedad(id: number): any {
     return (this.http.get<any>(this.BASE_URL + '/' + id));
   }
 
-  postPropiedad(propiedad: IPropiedad): any {
-    return (this.http.post<any>(this.BASE_URL, {'propiedad' : propiedad}));
+  postPropiedad(propiedad: IPropiedad, imagenes: File[]): any {
+    return (this.http.post<any>(this.BASE_URL, { "propiedad": propiedad }));
+  }
+
+  postImg(formData: FormData): any {
+    return (this.http.post<any>(this.BASE_URL + '/img', formData));
   }
 
   putPropiedad(propiedad: IPropiedad): any {

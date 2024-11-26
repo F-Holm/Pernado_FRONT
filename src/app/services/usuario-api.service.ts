@@ -19,7 +19,7 @@ export class UsuarioApiService {
   }
 
   postUsuario(usuario: IUsuario): any {
-    return this.http.post<any>(this.BASE_URL, {"usuario" : usuario});
+    return (this.http.post<any>(this.BASE_URL, {"usuario" : usuario}));
   }
 
   putUsuario(usuario: IUsuario): any {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { IChat } from '../../models/Chat';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { IChat } from '../../models/Chat';
 export class ChatApiService {
 
   constructor(private http: HttpClient){}
+
   private BASE_URL = "http://localhost:3000/api/chat";
 
   getChats(): any {

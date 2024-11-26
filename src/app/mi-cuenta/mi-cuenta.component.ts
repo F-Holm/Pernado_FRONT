@@ -4,11 +4,13 @@ import {IPropiedad} from "../../models/Propiedad";
 import {UsuarioApiService} from "../services/usuario-api.service";
 import {PropiedadApiService} from "../services/propiedad-api.service";
 import {ActivatedRoute} from "@angular/router";
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-mi-cuenta',
   standalone: true,
-  imports: [],
+  imports: [ CommonModule ],
   templateUrl: './mi-cuenta.component.html',
   styleUrl: './mi-cuenta.component.css'
 })

@@ -9,6 +9,7 @@ import { AgregarPropiedadComponent } from './agregar-propiedad/agregar-propiedad
 import { LoginComponent } from './login/login.component';
 import { PropiedadComponent } from './propiedad/propiedad.component';
 import { routes } from './app.routes';
+import {MapaComponent} from "./mapa/mapa.component";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { routes } from './app.routes';
     LoginComponent,
     RegisterComponent,
     AgregarPropiedadComponent,
-    NavbarComponent
+    NavbarComponent,
+    MapaComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

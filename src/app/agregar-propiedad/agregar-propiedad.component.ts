@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PropiedadApiService } from '../services/propiedad-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import {IPropiedad} from "../../models/Propiedad";
 
 @Component({
   selector: 'app-agregar-propiedad',
@@ -16,7 +17,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AgregarPropiedadComponent implements OnInit {
   propiedadForm!: FormGroup;
   tiposPropiedad: TipoPropiedad[] = Object.values(TipoPropiedad);
-  selectedImages: string[] = [];
+  selectedImages: File[] = [];
 
   // Mapeo de los valores de tipo propiedad (nombre -> número)
   tipoPropiedadMap: { [key in TipoPropiedad]: number } = {
@@ -81,36 +82,55 @@ export class AgregarPropiedadComponent implements OnInit {
     this.selectedImages = [];
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      this.selectedImages.push(URL.createObjectURL(file));  // Guardar solo la URL temporal de la imagen
+      this.selectedImages.push(file);
     }
   }
 
+  nombreImagenes(): string[]{
+    let nombres: string[] = [];
+    for (const img of this.selectedImages) {
+      const uniqueSuffix: string = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      nombres.push(uniqueSuffix + img.name);
+    }
+    return nombres;
+  }
 
-    onSubmit() {
-      const propiedadData = {
-        ...this.propiedadForm.value,
-        id: -1,
-        duenio: null,
-        imagenes: [],
-        preguntas: [],
-      };
+  onSubmit() {
+    const propiedadData = {
+      ...this.propiedadForm.value,
+      id: -1,
+      duenio: null,
+      preguntas: [],
+    };
 
-      console.log('Datos de la Propiedad:', propiedadData);
 
-      if (this.propiedadForm.valid) {
-        this.propiedadService.postPropiedad(propiedadData).subscribe(
-          () => {
-            this.router.navigateByUrl('/');
-            console.log('Propiedad agregada con éxito');
-          },
-          (error: HttpErrorResponse) => {
-            console.error('Error al agregar propiedad', error);
+
+    propiedadData.imagenes = this.nombreImagenes();
+
+    const formData: FormData = new FormData();
+
+    this.selectedImages.forEach((imagen: File, index: number): void => {
+      formData.append('img', imagen, propiedadData.imagenes[index]);
+    });
+
+    console.log(formData.get('img'))
+
+    if (this.propiedadForm.valid) {
+      this.propiedadService.postPropiedad(propiedadData as IPropiedad, this.selectedImages).subscribe(() => {
+        console.log('Propiedad agregada con éxito');
+        this.propiedadService.postImg(formData).subscribe(() => {
+          this.router.navigateByUrl('/');
+        }, (error: any) => {
+          console.log('ERROR AL SUBIR IMAGENES, error');
           }
         );
-      } else {
-        console.log('Formulario inválido');
-        this.propiedadForm.markAllAsTouched();
-      }
+      }, (error: HttpErrorResponse) => {
+          console.error('Error al agregar propiedad', error);
+        });
+    } else {
+      console.log('Formulario inválido');
+      this.propiedadForm.markAllAsTouched();
     }
+  }
 
 }
