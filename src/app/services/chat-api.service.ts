@@ -14,6 +14,10 @@ export class ChatApiService {
     return (this.http.get<any>(this.BASE_URL));
   }
 
+  getMyChats(idMiembro: number): any {
+    return (this.http.get<any>(this.BASE_URL + idMiembro));
+  }
+
   getChat(id: number): any {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
