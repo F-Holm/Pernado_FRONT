@@ -162,6 +162,7 @@ export class RegisterComponent {
         provincia,
         municipio,
         direccion,
+        piso_departamento,
         codigoPostal
       } = this.registerForm.value;
 
@@ -175,6 +176,7 @@ export class RegisterComponent {
         provincia,
         municipio,
         direccion,
+        piso_departamento,
         codigoPostal
       };
 

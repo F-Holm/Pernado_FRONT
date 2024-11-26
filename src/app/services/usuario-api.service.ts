@@ -10,10 +10,6 @@ export class UsuarioApiService {
   constructor(private http: HttpClient){}
   private BASE_URL = "http://localhost:3000/api/usuario";
 
-  toJSONString(usuario: IUsuario): string {
-    return "{ usuario: " + JSON.stringify(usuario) + "}";
-  }
-
   getUsuarios(): any {
     return (this.http.get<any>(this.BASE_URL));
   }
@@ -23,11 +19,11 @@ export class UsuarioApiService {
   }
 
   postUsuario(usuario: IUsuario): any {
-    return this.http.post<any>(this.BASE_URL, {"usuario" : usuario});
+    return (this.http.post<any>(this.BASE_URL, {"usuario" : usuario}));
   }
 
   putUsuario(usuario: IUsuario): any {
-    return (this.http.put<any>(this.BASE_URL, this.toJSONString(usuario)));
+    return (this.http.put<any>(this.BASE_URL, { "usuario" : usuario }));
   }
 
   deleteUsuario(id: number): any {

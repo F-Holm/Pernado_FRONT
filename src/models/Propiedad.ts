@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { TipoPropiedad } from './TipoPropiedad';
 import Caracteristicas, { ICaracteristicas } from './Caracteristicas';
 import Direccion, {IDireccion} from './Direccion';
@@ -26,6 +27,12 @@ export interface IPropiedad {
   preguntas: IPregunta[];
   caracteristicas: ICaracteristicas;
 }
+
+function getImg(propiedad: IPropiedad, indice: number){
+  return 'http://localhost:3000/api/img/' + propiedad.imagenes[indice];
+}
+
+const baseImgURL: string = 'http://localhost:3000/api/img/';
 
 
 // **** Functions **** //
@@ -102,5 +109,7 @@ function isPropiedad(arg: unknown): boolean {
 export default {
   new: new_,
   from,
+  getImg,
+  baseImgURL,
   isPropiedad,
 } as const;

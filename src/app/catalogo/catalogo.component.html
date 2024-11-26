@@ -10,10 +10,13 @@
           <li><strong>Dormitorios:</strong> {{ propiedad.caracteristicas.cantidadDormitorios }}</li>
           <li><strong>Baños:</strong> {{ propiedad.caracteristicas.cantidadBanios }}</li>
           <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
+          <li> {{ propiedad.id }} </li>
         </ul>
-        <button [routerLink]="['/casaCatalogo', propiedad.id]" class="btn btn-primary">
+        <button [routerLink]="['/propiedad', propiedad.id]" class="btn btn-primary">
           Más Información
         </button>
       </div>
     </div>
   </div>
+
+

@@ -8,14 +8,13 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+
     var token;
 
     if (typeof window !== 'undefined' && window.localStorage) {
       token = localStorage.getItem('token');
-      // Otras operaciones que dependan de localStorage
     } else {
-      console.log("dfuhjfodijfs");
+      console.log("no cargó el local storage");
       return next.handle(req);
     }
     console.log(token);

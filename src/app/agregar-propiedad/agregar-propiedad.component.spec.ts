@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { AgregarcasaComponent } from './agregarcasa.component';
+import { AgregarPropiedadComponent } from './agregar-propiedad.component';
 
 describe('AgregarcasaComponent', () => {
-  let component: AgregarcasaComponent;
-  let fixture: ComponentFixture<AgregarcasaComponent>;
+  let component: AgregarPropiedadComponent;
+  let fixture: ComponentFixture<AgregarPropiedadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AgregarcasaComponent, HttpClientModule]
+      imports: [AgregarPropiedadComponent, HttpClientModule]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(AgregarcasaComponent);
+
+    fixture = TestBed.createComponent(AgregarPropiedadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
