@@ -22,12 +22,12 @@ export class MiCuentaComponent implements OnInit {
 
   ngOnInit() {
     this.cargarUsuario();
-    this.cargarPropiedades();
   }
 
   cargarUsuario(): void {
     this.usuarioService.getUsuarioToken().subscribe((data: any) => {
       this.usuario = data.usuario;
+      this.cargarPropiedades();
     });
   }
 

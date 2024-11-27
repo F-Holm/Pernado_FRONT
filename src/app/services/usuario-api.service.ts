@@ -19,9 +19,8 @@ export class UsuarioApiService {
   }
 
   getUsuarioToken(): any {
-    return (this.http.get<any>(this.BASE_URL + '/token/'));
+    return (this.http.get<any>(this.BASE_URL + '/token'));
   }
-
 
   postUsuario(usuario: IUsuario): any {
     return (this.http.post<any>(this.BASE_URL, {"usuario" : usuario}));
