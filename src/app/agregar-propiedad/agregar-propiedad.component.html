@@ -1,0 +1,98 @@
+<div class="form-container">
+    <h2>Formulario de Propiedad</h2>
+
+    <form [formGroup]="propiedadForm" (ngSubmit)="onSubmit()">
+      <!-- Tipo de Propiedad -->
+      <label for="tipoPropiedad">Tipo de Propiedad</label>
+      <select id="tipoPropiedad" formControlName="tipoPropiedad">
+        <option *ngFor="let tipo of tiposPropiedad" [value]="tipo">{{ tipo }}</option>
+      </select>
+
+      <!-- Título -->
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" formControlName="titulo">
+
+      <!-- Descripción -->
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion"></textarea>
+
+      <!-- Precio -->
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" formControlName="precio">
+
+      <!-- Alquiler -->
+      <label for="alquiler">Alquiler</label>
+      <input type="checkbox" id="alquiler" formControlName="alquiler">
+
+      <!-- Expensas -->
+      <label for="expensas">Expensas</label>
+      <input type="number" id="expensas" formControlName="expensas">
+
+      <!-- Imagenes -->
+      <label for="imagenes">Imágenes</label>
+      <input type="file" id="imagenes" (change)="onImageSelected($event)" multiple>
+
+      <div *ngIf="selectedImages.length > 0">
+        <h4>Imágenes Seleccionadas:</h4>
+        <ul>
+          <li *ngFor="let image of selectedImages">{{ image }}</li>
+        </ul>
+      </div>
+
+      <!-- Características -->
+      <div formGroupName="caracteristicas">
+        <label for="cantidadAmbientes">Cantidad de Ambientes</label>
+        <input type="number" id="cantidadAmbientes" formControlName="cantidadAmbientes">
+
+        <label for="m2Totales">Metros Totales</label>
+        <input type="number" id="m2Totales" formControlName="m2Totales">
+
+        <label for="m2Cubiertos">Metros Cubiertos</label>
+        <input type="number" id="m2Cubiertos" formControlName="m2Cubiertos">
+
+        <label for="cantidadBanios">Cantidad de Baños</label>
+        <input type="number" id="cantidadBanios" formControlName="cantidadBanios">
+
+        <label for="cantidadDormitorios">Cantidad de Dormitorios</label>
+        <input type="number" id="cantidadDormitorios" formControlName="cantidadDormitorios">
+
+        <label for="cantidadToilettes">Cantidad de Toilettes</label>
+        <input type="number" id="cantidadToilettes" formControlName="cantidadToilettes">
+
+        <label for="anioConstruccionRemodelacion">Año de Construcción/Remodelación</label>
+        <input type="number" id="anioConstruccionRemodelacion" formControlName="anioConstruccionRemodelacion">
+
+        <label for="cantidadPlantas">Cantidad de Plantas</label>
+        <input type="number" id="cantidadPlantas" formControlName="cantidadPlantas">
+
+        <label for="cantidadGarages">Cantidad de Garages</label>
+        <input type="number" id="cantidadGarages" formControlName="cantidadGarages">
+
+        <label for="cantidadElevadores">Cantidad de Elevadores</label>
+        <input type="number" id="cantidadElevadores" formControlName="cantidadElevadores">
+
+        <label for="parrilla">Parrilla</label>
+        <input type="checkbox" id="parrilla" formControlName="parrilla">
+
+        <label for="pileta">Pileta</label>
+        <input type="checkbox" id="pileta" formControlName="pileta">
+
+        <label for="balcon">Balcón</label>
+        <input type="checkbox" id="balcon" formControlName="balcon">
+
+        <label for="patio">Patio</label>
+        <input type="checkbox" id="patio" formControlName="patio">
+
+        <label for="gimnasio">Gimnasio</label>
+        <input type="checkbox" id="gimnasio" formControlName="gimnasio">
+
+        <label for="seguridad">Seguridad</label>
+        <input type="checkbox" id="seguridad" formControlName="seguridad">
+
+        <label for="mascotas">Mascotas Permitidas</label>
+        <input type="checkbox" id="mascotas" formControlName="mascotas">
+      </div>
+
+      <button type="submit" [disabled]="propiedadForm.invalid">Enviar</button>
+    </form>
+  </div>

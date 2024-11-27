@@ -1,7 +1,7 @@
 // **** Variables **** //
 
-const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' + 
-  'with the appropriate user keys.';
+const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' +
+    'with the appropriate user keys.';
 
 
 // **** Types **** //
@@ -51,7 +51,7 @@ function isPregunta(arg: unknown): boolean {
     'texto' in arg && typeof arg.texto === 'string' &&
     'respuesta' in arg && typeof arg.respuesta === 'string' &&
     'usuario' in arg && typeof arg.usuario === 'number'
-    );
+  );
 }
 
 

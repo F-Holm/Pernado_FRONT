@@ -1,0 +1,4 @@
+<div id="contenedor">
+  <div id="lista-chats" *ngFor="let chat of chats; let i = index" (click)="selectChat(i)"><app-pre-chat [chat]="chats[chatActual]" [usuario]="usuario"></app-pre-chat></div>
+  <div *ngIf="tieneChats"><app-chat id="chat_actual" [chat]="chats[chatActual]" [usuario]="usuario"></app-chat></div>
+</div>

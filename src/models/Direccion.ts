@@ -1,18 +1,17 @@
+/* eslint-disable max-len */
 // **** Variables **** //
 
-const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' + 
+const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' +
   'with the appropriate user keys.';
 
 
 // **** Types **** //
 
 export interface IDireccion {
-  calle: string;
-  numero: number;
-  piso?: number;
-  departamento?: string;
   provincia: string;
-  ciudad: string;
+  municipio: string;
+  direccion: string;
+  piso_departamento: string;
   codigoPostal: number;
 }
 
@@ -23,21 +22,17 @@ export interface IDireccion {
  * Create new User.
  */
 function new_(
-  calle?: string,
-  numero?: number,
-  piso?: number,
-  departamento?: string,
   provincia?: string,
-  ciudad?: string,
-  codigoPostal?: number
+  municipio?: string,
+  direccion?: string,
+  piso_departamento?: string,
+  codigoPostal?: number,
 ): IDireccion {
   return {
-    calle: (calle ?? ""),
-    numero: (numero ?? 0),
-    piso: (piso ?? 0),
-    departamento: (departamento ?? ""),
-    provincia: (provincia ?? ""),
-    ciudad: (ciudad ?? ""),
+    provincia: (provincia ?? ''),
+    municipio: (municipio ?? ''),
+    direccion: (direccion ?? ''),
+    piso_departamento: (piso_departamento ?? ''),
     codigoPostal: (codigoPostal ?? 0),
   };
 }
@@ -50,7 +45,7 @@ function from(param: object): IDireccion {
     throw new Error(INVALID_CONSTRUCTOR_PARAM);
   }
   const p = param as IDireccion;
-  return new_(p.calle, p.numero, p.piso, p.departamento, p.provincia, p.ciudad, p.codigoPostal);
+  return new_(p.provincia, p.municipio, p.direccion, p.piso_departamento, p.codigoPostal);
 }
 
 /**
@@ -60,14 +55,16 @@ function isDireccion(arg: unknown): boolean {
   return (
     !!arg &&
     typeof arg === 'object' &&
-    'calle' in arg && typeof arg.calle === 'string' && 
-    'numero' in arg && typeof arg.numero === 'number' && 
-    'piso' in arg && typeof arg.piso === 'number' &&
-    'departamento' in arg && typeof arg.departamento === 'string' &&
     'provincia' in arg && typeof arg.provincia === 'string' &&
-    'ciudad' in arg && typeof arg.ciudad === 'string' &&
+    'municipio' in arg && typeof arg.municipio === 'string' &&
+    'direccion' in arg && typeof arg.direccion === 'string' &&
+    'piso_departamento' in arg && typeof arg.piso_departamento === 'string' &&
     'codigoPostal' in arg && typeof arg.codigoPostal === 'number'
   );
+}
+
+function dirCompleta(direccion: IDireccion): string {
+  return direccion.direccion + ', ' + direccion.municipio + ', ' + direccion.provincia + ', Argentina';
 }
 
 
@@ -76,5 +73,6 @@ function isDireccion(arg: unknown): boolean {
 export default {
   new: new_,
   from,
+  dirCompleta,
   isDireccion,
 } as const;

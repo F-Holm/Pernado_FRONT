@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <!-- Botón "Inicio" alineado a la izquierda -->
+  <ul class="navbar-menu-left">
+    <li><button class="navbar-button" (click)="inicio()">Inicio</button></li>
+  </ul>
+
+  <!-- Botones de Registro e Inicio de Sesión alineados a la derecha -->
+  <ul class="navbar-menu-right">
+    <ng-container *ngIf="!logged">
+      <li><button class="navbar-button" (click)="login()">Login</button></li>
+      <li><button class="navbar-button" (click)="register()">Register</button></li>
+    </ng-container>
+    <ng-container *ngIf="logged">
+      <li><button class="navbar-button" (click)="argegarCasa()">Agregar Propiedad</button></li>
+      <li><button class="navbar-button" (click)="chats()">Chats</button></li>
+      <li><button class="navbar-button" (click)="miCuenta()">Mi Cuenta</button></li>
+      <li><button class="navbar-button" (click)="logout()">Cerrar sesión</button></li>
+    </ng-container>
+  </ul>
+</nav>

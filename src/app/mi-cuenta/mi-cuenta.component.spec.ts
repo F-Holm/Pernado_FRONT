@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/*import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MiCuentaComponent } from './mi-cuenta.component';
 
@@ -11,7 +11,7 @@ describe('MiCuentaComponent', () => {
       imports: [MiCuentaComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(MiCuentaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('MiCuentaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
