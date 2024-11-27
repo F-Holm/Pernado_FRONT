@@ -1,3 +1,36 @@
+
+
+<div id="datos">
+  <h1>Mis Datos</h1>
+  <div id="datosUsuario">
+    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ usuario.fechaNacimiento }}</p>
+    <p><strong>Telefono:</strong> {{ usuario.telefono || 'No especificado' }}</p>
+  </div>
+  <button [routerLink]="['/modificarCuenta', usuario.id]" class="btn btn-primary">Editar Datos</button>
+  <button [routerLink]="['/']" class="btn btn-primary" (click)="borrarCuenta()">Borrar Datos</button>
+</div>
+
+<div id="propiedades">
+  <h1>Mis Propiedades</h1>
+  <div *ngFor="let propiedad of propiedades">
+    <div class="propiedad">
+      <img [src]="getImagen(propiedad)" alt="imagen de la propiedad">
+      <p><strong>Titulo:</strong> {{ propiedad.titulo }}</p>
+      <p><strong>Descripcion:</strong> {{ propiedad.descripcion }}</p>
+      <p><strong>Precio:</strong> {{ propiedad.precio }}</p>
+      <li><strong>Ambientes:</strong> {{ propiedad.caracteristicas.cantidadAmbientes }}</li>
+      <li><strong>Dormitorios:</strong> {{ propiedad.caracteristicas.cantidadDormitorios }}</li>
+      <li><strong>Baños:</strong> {{ propiedad.caracteristicas.cantidadBanios }}</li>
+      <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
+
+      <button [routerLink]="['/modificarPropiedad', propiedad.id]" class="btn btn-primary">Editar Propiedad</button>
+     <!-- <button [routerLink]="['/miCuenta']" class="btn btn-primary" (click)="borrarPropiedad(propiedad.id)">Borrar Propiedad</button>
+    --></div>
+  </div>
+
 <div id="contenedor">
   <div id="misDatos">
   </div>

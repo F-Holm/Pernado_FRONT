@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IPropiedad } from '../../models/Propiedad';
+import Propiedad, { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
 import {AuthService} from "../services/auth-api.service";
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 export class CatalogoComponent implements OnInit {
   propiedades: IPropiedad[] = [];
-
+  
   defaultImage: string = 'assets/image.png'; // Ruta a la imagen por defecto
 
   constructor(private propiedadService: PropiedadApiService) {}
@@ -22,12 +22,15 @@ export class CatalogoComponent implements OnInit {
   ngOnInit() {
     this.obtener();
   }
-
+  getImagen(propiedad: IPropiedad){
+    return  Propiedad.getImg(propiedad, 0);
+  }
   obtener() {
     this.propiedadService.getPropiedades().subscribe(
       (data: PropiedadesResponse) => {  // Usamos la interfaz `PropiedadesResponse`
        
         this.propiedades = Array.isArray(data.propiedades) ? data.propiedades : [];
+        
       },
       (error: any) => {
         console.error('Error al obtener propiedades:', error);
