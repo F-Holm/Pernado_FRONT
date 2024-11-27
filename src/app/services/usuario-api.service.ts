@@ -18,10 +18,13 @@ export class UsuarioApiService {
     return (this.http.get<any>(this.BASE_URL + "/" + id));
   }
 
-  getUsuarioToken(): any {
-    return (this.http.get<any>(this.BASE_URL + '/token/'));
+  getNombreUsuario(id: number): any {
+    return (this.http.get<any>(this.BASE_URL + '/nombreUsuario/' + id));
   }
 
+  getUsuarioToken(): any {
+    return (this.http.get<any>(this.BASE_URL + '/token'));
+  }
 
   postUsuario(usuario: IUsuario): any {
     return (this.http.post<any>(this.BASE_URL, {"usuario" : usuario}));

@@ -38,4 +38,8 @@ export class NavbarComponent {
   public argegarCasa(): void{
     this.router.navigate(['/agregarPropiedad']);
   }
+
+  public chats(): void{
+    this.router.navigate(['/chats']);
+  }
 }

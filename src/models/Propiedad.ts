@@ -28,11 +28,11 @@ export interface IPropiedad {
   caracteristicas: ICaracteristicas;
 }
 
-function getImg(propiedad: IPropiedad, indice: number){
-  return 'http://localhost:3000/api/img/' + propiedad.imagenes[indice];
-}
-
 const baseImgURL: string = 'http://localhost:3000/api/img/';
+
+function getImg(propiedad: IPropiedad, indice: number): string {
+  return baseImgURL + propiedad.imagenes[indice];
+}
 
 
 // **** Functions **** //
