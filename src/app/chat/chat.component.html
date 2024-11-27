@@ -1,0 +1,25 @@
+<div *ngFor="let mensaje of chat.mensajes; let i = index">
+  <p class="nombre">{{ getNombre(i) }}:</p>
+  <p class="msg">{{ mensaje.contenido }}</p>
+</div>
+<!-- chat.component.html -->
+<div class="chat-container">
+  <form (ngSubmit)="enviarMensaje()" #mensajeForm="ngForm">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="mensaje"
+        name="mensaje"
+        [(ngModel)]="_msg"
+        placeholder="Escribe tu mensaje..."
+        required
+        minlength="1"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!mensajeForm.valid">
+      Enviar
+    </button>
+  </form>
+</div>
+

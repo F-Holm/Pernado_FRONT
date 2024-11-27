@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../auth-api.service';
+import { AuthService } from '../services/auth-api.service';
 
 @Component({
   selector: 'app-login',
@@ -43,11 +43,12 @@ export class LoginComponent {
       console.log('Formulario inválido');
       this.formLog.markAllAsTouched();
     }
-    
+
     this.servicio.logUser(this.formLog.get('mail')?.value, this.formLog.get('contra')?.value).subscribe((res: any) => {
       localStorage.setItem('token', res.token);
-      this.router.navigateByUrl('/');
+      location.reload();
+      //this.router.navigateByUrl('/');
     });
   }
-  
+
 }

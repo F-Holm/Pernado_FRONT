@@ -2,7 +2,7 @@
 * {
     box-sizing: border-box;
   }
-  
+
   /* Configuración del fondo de la página */
   html,
   body {
@@ -11,7 +11,7 @@
     padding: 0;
     font-family: Arial, sans-serif;
   }
-  
+
   /* Estilo del formulario */
   .custom-form {
     min-width: 300px;
@@ -25,7 +25,7 @@
     color: black;
     margin-top: 2%;
   }
-  
+
   /* Contenedor para los campos en línea */
   .form-group {
     display: flex;
@@ -33,7 +33,7 @@
     gap: 1rem;
     margin: 1rem 0;
   }
-  
+
   /* Estilo de los campos de entrada */
   .custom-form input {
     display: block;
@@ -45,7 +45,7 @@
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
   }
-  
+
   /* Estilo del botón de envío */
   .custom-form button {
     text-transform: uppercase;
@@ -62,15 +62,25 @@
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     cursor: pointer;
   }
-  
+
   /* Agrega estilos para el enfoque de los campos de entrada */
   .custom-form input:focus {
     outline: none;
     border: 2px solid #bcd8c1;
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
   /* Estilo para los campos de entrada en línea */
   .form-group .form-field {
     flex: 1;
   }
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+  border-color: red;
+}
