@@ -14,28 +14,43 @@ import { RouterModule } from '@angular/router';
 })
 export class CatalogoComponent implements OnInit {
   propiedades: IPropiedad[] = [];
+  indice: number = 0;
+  imagenesMostradasPorPagina: number = 20;
+  cant: number = 0;
 
-  defaultImage: string = 'assets/image.png'; // Ruta a la imagen por defecto
+  defaultImage: string = 'assets/image.png';
 
   constructor(private propiedadService: PropiedadApiService) {}
 
   ngOnInit() {
+    this.getCant();
     this.obtener();
   }
 
-  obtener() {
-    this.propiedadService.getPropiedades().subscribe(
-      (data: PropiedadesResponse) => {  // Usamos la interfaz `PropiedadesResponse`
-       
-        this.propiedades = Array.isArray(data.propiedades) ? data.propiedades : [];
+  getCant(): void {
+    this.propiedadService.getCantPropiedades().subscribe((data: any) => {
+      this.cant = data.cant;
+    })
+  }
+
+  obtener(): void {
+    this.propiedadService.getPropiedadesLimitSkip(this.imagenesMostradasPorPagina, this.indice).subscribe((data: any) => {
+        this.propiedades = data.propiedades;
       },
       (error: any) => {
         console.error('Error al obtener propiedades:', error);
       }
     );
   }
-  
-}
-interface PropiedadesResponse {
-  propiedades: IPropiedad[];
+
+  siguientePagina(): void{
+    if (this.cant > this.indice + this.imagenesMostradasPorPagina) this.indice += this.imagenesMostradasPorPagina;
+    this.obtener();
+  }
+
+  paginaAnterior(): void{
+    if (0 != this.indice) this.indice -= this.imagenesMostradasPorPagina;
+    this.obtener();
+  }
+
 }
