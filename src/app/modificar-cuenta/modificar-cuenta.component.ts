@@ -131,62 +131,56 @@ export class ModificarCuentaComponent implements OnInit {
     
   }
 
-  agregarUsuario() {
-    if (this.registerForm.valid) {
-      const {
-        email,
-        nombre,
-        apellido,
-        dni,
-        telefono,
-        nombreUsuario,
-        fechaNacimiento,
+  actualizarCuenta() {
+    const {
+      email,
+      nombre,
+      apellido,
+      dni,
+      telefono,
+      nombreUsuario,
+      fechaNacimiento,
+      provincia,
+      municipio,
+      direccion,
+      piso_departamento,
+      codigoPostal
+    } = this.registerForm.value;
+  
+    // Mantener la contraseña, id y admin como están
+    const usuario: IUsuario = {
+      id: this.usuario.id,  // El ID se mantiene igual
+      dni,
+      email,
+      telefono,
+      nombre,
+      apellido,
+      nombreUsuario,
+      contrasenia: '',  // Mantener la contraseña original
+      fechaNacimiento: new Date(fechaNacimiento),
+      direccion: {
         provincia,
         municipio,
         direccion,
         piso_departamento,
         codigoPostal
-      } = this.registerForm.value;
-
-
-      const dir: IDireccion = {
-        provincia,
-        municipio,
-        direccion,
-        piso_departamento,
-        codigoPostal
-      };
-
-      const fechaNacimientoDate = new Date(fechaNacimiento);
-
-      const usuario: IUsuario = {
-        id: -1,
-        dni,
-        email,
-        telefono,
-        nombre,
-        apellido,
-        nombreUsuario,
-        contrasenia:this.usuario.contrasenia,
-        fechaNacimiento: fechaNacimientoDate,
-        direccion: dir,
-        admin: false,
-      };
-
-      this.usuarioService.putUsuario(usuario).subscribe(
-        (response: any) => {
-          this.router.navigateByUrl('/mi-cuenta');
-          console.log('Usuario actualizado con éxito');
-        },
-        (error: any) => {
-          console.error('Error al actualizar usuario', error);
-        }
-      );
-    } else {
-      console.log('Formulario inválido');
-      this.registerForm.markAllAsTouched();
-    }
+      },
+      admin: this.usuario.admin,  // Mantener el campo admin igual
+    };
+    console.log(usuario);
+    this.usuarioService.putUsuario(usuario).subscribe(
+      (response: any) => {
+        console.log('Usuario actualizado con éxito');
+        this.router.navigateByUrl('/mi-cuenta');
+        
+      },
+      (error: any) => {
+        console.error('Error al actualizar usuario', error);
+      }
+    );
   }
+  
+  
 
   ngOnInit(){
     this.cargarUsuario();
@@ -195,27 +189,27 @@ export class ModificarCuentaComponent implements OnInit {
   cargarUsuario(): void {
     this.usuarioService.getUsuario(this.idUsuario).subscribe((data: any) => {
       this.usuario = data.usuario;
-  
-      // Una vez que tienes los datos del usuario, inicializas el formulario
-      this.registerForm = this.fb.group({
-        email: [this.usuario?.email || '', [Validators.required, Validators.email]],
-        nombre: [this.usuario?.nombre || '', Validators.required],
-        apellido: [this.usuario?.apellido || '', Validators.required],
-        dni: [this.usuario?.dni || '', Validators.required],
-        telefono: [this.usuario?.telefono || '', Validators.required],
-        nombreUsuario: [this.usuario?.nombreUsuario || '', Validators.required],
-        fechaNacimiento: [this.usuario?.fechaNacimiento || '', Validators.required],
-        provincia: [this.usuario?.direccion?.provincia || '', Validators.required],
-        municipio: [this.usuario?.direccion?.municipio || '', Validators.required],
-        direccion: [this.usuario?.direccion?.direccion || '', Validators.required],
-        piso_departamento: [this.usuario?.direccion?.piso_departamento || ''],
-        codigoPostal: [this.usuario?.direccion?.codigoPostal || '', Validators.required],
+      console.log(this.usuario);
+      const fechaNacimiento = this.usuario.fechaNacimiento
+      ? new Date(this.usuario.fechaNacimiento).toISOString().split('T')[0]
+      : '';  // Si no hay fecha, lo dejamos vacío
+       // Inicializamos el formulario con los valores del usuario
+       this.registerForm = this.fb.group({
+        email: [this.usuario.email],
+        nombre: [this.usuario.nombre],
+        apellido: [this.usuario.apellido],
+        dni: [this.usuario.dni],
+        telefono: [this.usuario.telefono],
+        nombreUsuario: [this.usuario.nombreUsuario],
+        fechaNacimiento: [fechaNacimiento],
+        direccion: [this.usuario.direccion.direccion],
+        provincia: [this.usuario.direccion.provincia],
+        municipio: [this.usuario.direccion.municipio],
+        piso_departamento: [this.usuario.direccion.piso_departamento],
+        codigoPostal: [this.usuario.direccion.codigoPostal]
       });
-  
-      // Actualizamos los municipios basados en la provincia seleccionada
-      if (this.usuario?.direccion?.provincia) {
+        // Actualizamos los municipios con la provincia seleccionada
         this.actualizarMunicipios(this.usuario.direccion.provincia);
-      }
     });
   }
   

@@ -25,13 +25,13 @@ export class MiCuentaComponent implements OnInit {
 
   ngOnInit() {
     this.cargarUsuario();
-    this.cargarPropiedades();
   }
 
   cargarUsuario(): void {
     
     this.usuarioService.getUsuarioToken().subscribe((data: any) => {
       this.usuario = data.usuario;
+      this.cargarPropiedades();
     });
   }
   getImagen(propiedad: IPropiedad){
@@ -40,7 +40,7 @@ export class MiCuentaComponent implements OnInit {
   cargarPropiedades(): void {
     this.propiedadService.getPropiedadesUsuarios(this.usuario.id).subscribe((data: any) => {
       this.propiedades = data.propiedades;
-      console.log(this.propiedades);
+      console.log("hola"+this.propiedades);
     });
   }
 

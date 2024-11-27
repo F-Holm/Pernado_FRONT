@@ -1,108 +1,144 @@
-<form [formGroup]="registerForm" (ngSubmit)="agregarUsuario()" class="custom-form">
-    <h1>Regístrate</h1>
-
-    <!-- Nombre y Apellido -->
+<form id="formulario" class="todo" [formGroup]="registerForm" (ngSubmit)="actualizarCuenta()">
     <div class="form-group">
-      <div class="form-field">
-        <input id="nombre" formControlName="nombre" value="{{usuario.nombre}}" />
-        <div *ngIf="registerForm.get('nombre')?.touched && registerForm.get('nombre')?.invalid">
-          <small *ngIf="registerForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
-        </div>
-      </div>
-      <div class="form-field">
-        <input id="apellido" formControlName="apellido" placeholder="Apellido" />
-        <div *ngIf="registerForm.get('apellido')?.touched && registerForm.get('apellido')?.invalid">
-          <small *ngIf="registerForm.get('apellido')?.errors?.['required']">El apellido es obligatorio.</small>
-        </div>
-      </div>
+      <h5>Actualizar datos de usuario</h5>
     </div>
-
+  
+    <!-- DNI -->
+    <div class="form-group">
+      <label for="dni">DNI</label>
+      <input
+        name="dni"
+        type="number"
+        class="form-control"
+        id="dni"
+        formControlName="dni"
+      />
+    </div>
+  
     <!-- Email -->
-    <div>
-      <input id="email" formControlName="email" placeholder="Email" />
-      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
-        <small *ngIf="registerForm.get('email')?.errors?.['required']">El correo electrónico es obligatorio.</small>
-        <small *ngIf="registerForm.get('email')?.errors?.['email']">Introduce una dirección de correo electrónico válida.</small>
-      </div>
-    </div>
-
-   
-    <!-- DNI y Teléfono -->
     <div class="form-group">
-      <div class="form-field">
-        <input id="dni" type="number" formControlName="dni" placeholder="DNI" />
-        <div *ngIf="registerForm.get('dni')?.touched && registerForm.get('dni')?.invalid">
-          <small *ngIf="registerForm.get('dni')?.errors?.['required']">El DNI es obligatorio.</small>
-        </div>
-      </div>
-      <div class="form-field">
-        <input id="telefono" type="number" formControlName="telefono" placeholder="Teléfono" />
-        <div *ngIf="registerForm.get('telefono')?.touched && registerForm.get('telefono')?.invalid">
-          <small *ngIf="registerForm.get('telefono')?.errors?.['required']">El teléfono es obligatorio.</small>
-        </div>
-      </div>
+      <label for="email">Email</label>
+      <input
+        name="email"
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
     </div>
-
+  
+    <!-- Teléfono -->
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input
+        name="telefono"
+        type="text"
+        class="form-control"
+        id="telefono"
+        formControlName="telefono"
+      />
+    </div>
+  
+    <!-- Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        name="nombre"
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+      />
+    </div>
+  
+    <!-- Apellido -->
+    <div class="form-group">
+      <label for="apellido">Apellido</label>
+      <input
+        name="apellido"
+        type="text"
+        class="form-control"
+        id="apellido"
+        formControlName="apellido"
+      />
+    </div>
+  
     <!-- Nombre de Usuario -->
-    <div class="form-field form-group" >
-      <input id="nombreUsuario" formControlName="nombreUsuario" placeholder="Nombre de Usuario" />
-      <div *ngIf="registerForm.get('nombreUsuario')?.touched && registerForm.get('nombreUsuario')?.invalid">
-        <small *ngIf="registerForm.get('nombreUsuario')?.errors?.['required']">El nombre de usuario es obligatorio.</small>
-      </div>
+    <div class="form-group">
+      <label for="nombreUsuario">Nombre de Usuario</label>
+      <input
+        name="nombreUsuario"
+        type="text"
+        class="form-control"
+        id="nombreUsuario"
+        formControlName="nombreUsuario"
+      />
     </div>
-
+  
     <!-- Fecha de Nacimiento -->
-    <div class="form-field form-group">
-      <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" placeholder="Fecha de Nacimiento" />
-      <div *ngIf="registerForm.get('fechaNacimiento')?.touched && registerForm.get('fechaNacimiento')?.invalid">
-        <small *ngIf="registerForm.get('fechaNacimiento')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
-      </div>
+    <div class="form-group">
+      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input
+        name="fechaNacimiento"
+        type="date"
+        class="form-control"
+        id="fechaNacimiento"
+        formControlName="fechaNacimiento"
+      />
     </div>
-
-    <!-- Provincia y Municipio -->
+  
+    <!-- Dirección -->
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input
+        name="direccion"
+        type="text"
+        class="form-control"
+        id="direccion"
+        formControlName="direccion"
+      />
+    </div>
+  
     <div class="form-group">
       <div class="form-field">
         <label for="provincia">Provincia:</label>
         <select id="provincia" formControlName="provincia" (change)="actualizarMunicipios($any($event.target).value)">
           <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
         </select>
-        <div *ngIf="registerForm.get('provincia')?.touched && registerForm.get('provincia')?.invalid">
-          <small *ngIf="registerForm.get('provincia')?.errors?.['required']">La provincia es obligatoria.</small>
-        </div>
       </div>
       <div class="form-field">
         <label for="municipio">Municipio:</label>
         <select id="municipio" formControlName="municipio">
           <option *ngFor="let municipio of municipios" [value]="municipio">{{municipio}}</option>
         </select>
-        <div *ngIf="registerForm.get('municipio')?.touched && registerForm.get('municipio')?.invalid">
-          <small *ngIf="registerForm.get('municipio')?.errors?.['required']">El municipio es obligatorio.</small>
-        </div>
       </div>
     </div>
-
-    <!-- Dirección -->
+  
+    <!-- Piso/Departamento -->
     <div class="form-group">
-      <div class="form-field">
-        <input id="direccion" formControlName="direccion" placeholder="Direccion" />
-        <div *ngIf="registerForm.get('direccion')?.touched && registerForm.get('direccion')?.invalid">
-          <small *ngIf="registerForm.get('direccion')?.errors?.['required']">La dirección es obligatoria.</small>
-        </div>
-      </div>
-      <div class="form-field">
-        <input id="piso_departamento" formControlName="piso_departamento" placeholder="Piso / Departamento" />
-      </div>
+      <label for="piso_departamento">Piso/Departamento</label>
+      <input
+        name="piso_departamento"
+        type="text"
+        class="form-control"
+        id="piso_departamento"
+        formControlName="piso_departamento"
+      />
     </div>
-
+  
     <!-- Código Postal -->
     <div class="form-group">
-      <div class="form-field">
-        <input id="codigoPostal" formControlName="codigoPostal" placeholder="Codigo postal" />
-          <div *ngIf="registerForm.get('codigoPostal')?.touched && registerForm.get('codigoPostal')?.invalid">
-            <small *ngIf="registerForm.get('codigoPostal')?.errors?.['required']">El código postal es obligatorio.</small>
-          </div>
-      </div>
+      <label for="codigoPostal">Código Postal</label>
+      <input
+        name="codigoPostal"
+        type="number"
+        class="form-control"
+        id="codigoPostal"
+        formControlName="codigoPostal"
+      />
     </div>
-
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  
+    <!-- Botón de envío -->
+    <button type="submit" class="btn btn-primary">Actualizar</button>
   </form>
+  
