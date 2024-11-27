@@ -5,13 +5,16 @@ import {UsuarioApiService} from "../services/usuario-api.service";
 import {IUsuario} from "../../models/Usuario";
 import {PreChatComponent} from "../pre-chat/pre-chat.component";
 import {ChatComponent} from "../chat/chat.component";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-chats',
   standalone: true,
   imports: [
     PreChatComponent,
-    ChatComponent
+    ChatComponent,
+    NgForOf,
+    NgIf
   ],
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.css'
@@ -20,6 +23,7 @@ export class ChatsComponent implements OnInit {
   chats!: IChat[];
   chatActual: number = 0;
   usuario!: number;
+  tieneChats: boolean = false;
 
   constructor(private apiChats: ChatApiService, private apiUsuario: UsuarioApiService) {}
 
@@ -31,6 +35,7 @@ export class ChatsComponent implements OnInit {
   cargarChats(): void {
     this.apiChats.getMyChatsToken().subscribe((data: any) => {
       this.chats = data.chats;
+      this.tieneChats = this.chats.length > 0;
     })
   }
 
