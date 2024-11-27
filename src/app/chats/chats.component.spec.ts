@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/*import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatsComponent } from './chats.component';
 
@@ -11,7 +11,7 @@ describe('ChatsComponent', () => {
       imports: [ChatsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ChatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('ChatsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

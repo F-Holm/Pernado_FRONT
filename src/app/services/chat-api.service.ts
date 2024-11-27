@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { IChat } from '../../models/Chat';
+import {IMensaje} from "../../models/Mensaje";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class ChatApiService {
 
   getMyChatsToken(): any {
     return (this.http.get<any>(this.BASE_URL + '/mychats/'));
+  }
+
+  postMensaje(id: number, mensaje: IMensaje): any {
+    return (this.http.post<any>(this.BASE_URL + '/mensaje', { 'id': id, 'mensaje' : mensaje }));
   }
 
   getChat(id: number): any {
