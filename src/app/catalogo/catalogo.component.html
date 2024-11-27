@@ -1,3 +1,5 @@
+<div id="Busqueda"></div>
+<div id="Filtros"></div>
 <div class="catalogo" *ngFor="let propiedad of propiedades">
     <div class="catalog-card">
       <img [src]="(propiedad.imagenes && propiedad.imagenes.length > 0) ? propiedad.imagenes[0] : defaultImage" alt="Imagen propiedad">
