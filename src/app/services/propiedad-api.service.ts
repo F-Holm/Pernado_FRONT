@@ -23,23 +23,23 @@ export class PropiedadApiService {
     return (this.http.get<any>(this.BASE_URL + "/usuario/" + idUsuario));
   }
 
-  getPropiedadesFiltros(filtrosPropiedad: IFiltrosPropiedad): any {
-    return (this.http.get<any>(this.BASE_URL + '/filtered/' + JSON.stringify(filtrosPropiedad)));
+  getPropiedadesFiltros(query: any): any {
+    return (this.http.post<any>(this.BASE_URL + '/filtered', { 'query' : query }));
   }
 
   getPropiedadesLimitSkip(limit: number, skip: number): any {
     return (this.http.get<any>(this.BASE_URL + '/ls/' + limit + '/' + skip));
   }
 
-  getPropiedadesFiltrosLimitSkip(filtrosPropiedad: IFiltrosPropiedad, limit: number, skip: number): any {
-    return (this.http.get<any>(this.BASE_URL + '/fileterls/' + JSON.stringify(filtrosPropiedad) + '/' + limit + '/' + skip));
+  getPropiedadesFiltrosLimitSkip(query: any, limit: number, skip: number): any {
+    return (this.http.post<any>(this.BASE_URL + '/filteredls', { "query": query, "limit": limit, "skip": skip }));
   }
 
   getPropiedad(id: number): any {
     return (this.http.get<any>(this.BASE_URL + '/' + id));
   }
 
-  postPropiedad(propiedad: IPropiedad, imagenes: File[]): any {
+  postPropiedad(propiedad: IPropiedad): any {
     return (this.http.post<any>(this.BASE_URL, { "propiedad": propiedad }));
   }
 

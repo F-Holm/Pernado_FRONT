@@ -1,22 +1,122 @@
+<div id="barra_busqueda">
+  <input id="input_buscra" [(ngModel)]="busqueda" type="text" placeholder="Buscar">
+  <button id="btn_buscar" (click)="buscar()">Buscar</button>
+  <button id="filtros_boton" (click)="btnFiltros()">Filtros</button>
+</div>
+<div id="filtros" *ngIf="mostrarFiltros">
+  <form [formGroup]="filtrosForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="precioMin">Precio Mínimo</label>
+      <input type="number" id="precioMin" formControlName="precioMin" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="precioMax">Precio Máximo</label>
+      <input type="number" id="precioMax" formControlName="precioMax" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="alquiler">Alquiler</label>
+      <input type="checkbox" id="alquiler" formControlName="alquiler" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="tipoPropiedad">Tipo de Propiedad</label>
+      <input type="text" id="tipoPropiedad" formControlName="tipoPropiedad" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="expensasMin">Expensas Mínimas</label>
+      <input type="number" id="expensasMin" formControlName="expensasMin" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="expensasMax">Expensas Máximas</label>
+      <input type="number" id="expensasMax" formControlName="expensasMax" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="provincia">Provincia</label>
+      <input type="text" id="provincia" formControlName="provincia" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="municipio">Municipio</label>
+      <input type="text" id="municipio" formControlName="municipio" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="cantidadAmbientesMin">Cantidad Ambientes Mínima</label>
+      <input type="number" id="cantidadAmbientesMin" formControlName="cantidadAmbientesMin" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="cantidadAmbientesMax">Cantidad Ambientes Máxima</label>
+      <input type="number" id="cantidadAmbientesMax" formControlName="cantidadAmbientesMax" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="m2TotalesMin">M2 Totales Mínimos</label>
+      <input type="number" id="m2TotalesMin" formControlName="m2TotalesMin" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="m2TotalesMax">M2 Totales Máximos</label>
+      <input type="number" id="m2TotalesMax" formControlName="m2TotalesMax" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="parrilla">Parrilla</label>
+      <input type="checkbox" id="parrilla" formControlName="parrilla" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="pileta">Pileta</label>
+      <input type="checkbox" id="pileta" formControlName="pileta" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="balcon">Balcón</label>
+      <input type="checkbox" id="balcon" formControlName="balcon" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="gimnasio">Gimnasio</label>
+      <input type="checkbox" id="gimnasio" formControlName="gimnasio" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="seguridad">Seguridad</label>
+      <input type="checkbox" id="seguridad" formControlName="seguridad" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="filtrosForm.invalid">Aplicar Filtros</button>
+      <button type="button" class="btn btn-secondary" (click)="onReset()">Reiniciar</button>
+    </div>
+  </form>
+</div>
 <div class="catalogo" *ngFor="let propiedad of propiedades">
-    <div class="catalog-card">
-      <img [src]="(propiedad.imagenes && propiedad.imagenes.length > 0) ? propiedad.imagenes[0] : defaultImage" alt="Imagen propiedad">
-      <div class="info">
-        <h2>{{ propiedad.titulo }}</h2>
-        <p>{{ propiedad.ubicacion || 'No especificada' }}</p>
-        <p><strong>Precio:</strong> ${{ propiedad.precio }}</p>
-        <ul>
-          <li><strong>Ambientes:</strong> {{ propiedad.caracteristicas.cantidadAmbientes }}</li>
-          <li><strong>Dormitorios:</strong> {{ propiedad.caracteristicas.cantidadDormitorios }}</li>
-          <li><strong>Baños:</strong> {{ propiedad.caracteristicas.cantidadBanios }}</li>
-          <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
-          <li> {{ propiedad.id }} </li>
-        </ul>
-        <button [routerLink]="['/propiedad', propiedad.id]" class="btn btn-primary">
-          Más Información
-        </button>
-      </div>
+  <div class="catalog-card">
+    <img [src]="(propiedad.imagenes && propiedad.imagenes.length > 0) ? propiedad.imagenes[0] : defaultImage" alt="Imagen propiedad">
+    <div class="info">
+      <h2>{{ propiedad.titulo }}</h2>
+      <p>{{ propiedad.ubicacion || 'No especificada' }}</p>
+      <p><strong>Precio:</strong> ${{ propiedad.precio }}</p>
+      <ul>
+        <li><strong>Ambientes:</strong> {{ propiedad.caracteristicas.cantidadAmbientes }}</li>
+        <li><strong>Dormitorios:</strong> {{ propiedad.caracteristicas.cantidadDormitorios }}</li>
+        <li><strong>Baños:</strong> {{ propiedad.caracteristicas.cantidadBanios }}</li>
+        <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
+        <li> {{ propiedad.id }} </li>
+      </ul>
+      <button [routerLink]="['/propiedad', propiedad.id]" class="btn btn-primary">
+        Más Información
+      </button>
     </div>
   </div>
-
-
+</div>
+<div *ngIf="cant > imagenesMostradasPorPagina">
+  <button id="ant" (click)="paginaAnterior()">Página anterior</button>
+  <button id="next" (click)="siguientePagina()">Página siguiente</button>
+</div>
