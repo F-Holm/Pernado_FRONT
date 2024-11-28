@@ -1,0 +1,137 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Sección de datos del usuario */
+#datos {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+#datos h1 {
+    font-size: 1.8em;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+#datosUsuario p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+#datosUsuario p strong {
+    color: #444;
+}
+
+#datos .btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Separación entre botones */
+#datos .btn + .btn {
+    margin-left: 10px;
+}
+
+#datos .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sección de propiedades */
+#propiedades {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1000px;
+}
+
+#propiedades h1 {
+    font-size: 1.8em;
+    color: #0056b3;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.propiedad {
+    background-color: #ffffff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;  /* Asegura que los elementos se distribuyan correctamente */
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden en múltiples líneas si es necesario */
+}
+
+.propiedad img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.propiedad p,
+.propiedad li {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.propiedad strong {
+    color: #444;
+}
+
+/* Eliminar puntos de las listas */
+.propiedad li {
+    list-style: none;
+    margin-left: 0;
+}
+
+/* Estilo para los botones */
+.propiedad .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 5px 5px 0 0;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+    white-space: nowrap;  /* Evita que el texto del botón se divida */
+    flex-shrink: 0;  /* Evita que el botón se reduzca en tamaño */
+}
+
+.propiedad .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Adaptabilidad para móviles */
+@media (max-width: 768px) {
+    .propiedad {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .propiedad img {
+        width: 100%;
+        height: auto;
+    }
+}
