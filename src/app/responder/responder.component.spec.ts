@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/*import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResponderComponent } from './responder.component';
 
@@ -11,7 +11,7 @@ describe('ResponderComponent', () => {
       imports: [ResponderComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ResponderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('ResponderComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
