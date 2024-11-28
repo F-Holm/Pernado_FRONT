@@ -1,51 +1,69 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import Propiedad, { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
+import { CommonModule } from '@angular/common';
+import { MapaComponent } from '../mapa/mapa.component';
+import Direccion, { IDireccion } from '../../models/Direccion';
+import { AuthService } from '../services/auth-api.service';
+import { IUsuario } from '../../models/Usuario';
 
 @Component({
   selector: 'app-propiedad',
   standalone: true,
-  imports: [ CommonModule, RouterModule],
+  imports: [RouterModule,CommonModule,MapaComponent],
   templateUrl: './propiedad.component.html',
-  styleUrl: './propiedad.component.css'
+  styleUrls: ['./propiedad.component.css']
 })
 export class PropiedadComponent implements OnInit {
   idpropiedad!: number;
-  propiedad: IPropiedad = Propiedad.new();
-  imagenActual!: number;
-  constructor(private servicio: PropiedadApiService, private route: ActivatedRoute) {}
+  propiedad!: IPropiedad 
+  duebio!:IUsuario;
+  imagenActual: number = 0;  // Inicializa en 0 (primera imagen)
+
+  constructor(private servicio: PropiedadApiService, private route: ActivatedRoute,private auth:AuthService) {}
 
   ngOnInit() {
     this.cargar();
   }
 
-  public cargar(): void {
+  cargar(): void {
     this.idpropiedad = parseInt(this.route.snapshot.params['id'], 10);
-    this.servicio.getPropiedad(this.idpropiedad).subscribe((data:any) => {
+    this.servicio.getPropiedad(this.idpropiedad).subscribe((data: any) => {
       this.propiedad = data.propiedad as IPropiedad;
-      if (this.propiedad.imagenes == null || this.propiedad.imagenes.length == 0){
+      console.log(this.propiedad);
+      if (!this.propiedad.imagenes || this.propiedad.imagenes.length === 0) {
         this.imagenActual = -1;
-      } else {
-        this.imagenActual = 0;
       }
+      
     });
   }
-
+  dirCompleta(direccion: IDireccion): string {
+    return Direccion.dirCompleta(direccion);
+  }
   siguienteImagen() {
-    if (this.imagenActual < this.propiedad.imagenes.length - 1) {
+    if (this.propiedad.imagenes && this.imagenActual < this.propiedad.imagenes.length - 1) {
       this.imagenActual++;
     } else {
-      this.imagenActual = 0;
+      this.imagenActual = 0;  // Vuelve a la primera imagen
     }
   }
-
+  getImagen(index: number): string {
+    return 'http://localhost:3000/api/img/' +this.propiedad.imagenes[index];
+  }
   anteriorImagen() {
-    if (this.imagenActual > 0) {
+    if (this.propiedad.imagenes && this.imagenActual > 0) {
       this.imagenActual--;
     } else {
-      this.imagenActual = this.propiedad.imagenes.length - 1;
+      this.imagenActual = this.propiedad.imagenes.length - 1;  // Vuelve a la última imagen
+    }
+  }
+  contactar() {
+    if(this.auth.loggedIn()){
+    
+    
+    }else{
+      alert('Debe iniciar sesion para contactar con el propietario');
     }
   }
 }
