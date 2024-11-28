@@ -10,11 +10,12 @@ import { IUsuario } from '../../models/Usuario';
 import {ChatApiService} from "../services/chat-api.service";
 import Chat from "../../models/Chat";
 import {routes} from "../app.routes";
+import {PreguntasComponent} from "../preguntas/preguntas.component";
 
 @Component({
   selector: 'app-propiedad',
   standalone: true,
-  imports: [RouterModule,CommonModule,MapaComponent],
+  imports: [RouterModule, CommonModule, MapaComponent, PreguntasComponent],
   templateUrl: './propiedad.component.html',
   styleUrls: ['./propiedad.component.css']
 })

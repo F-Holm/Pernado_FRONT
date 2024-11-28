@@ -9,6 +9,7 @@ import { PropiedadComponent } from './propiedad/propiedad.component';
 import {ModificarPropiedadComponent} from "./modificar-propiedad/modificar-propiedad.component";
 import {ModificarCuentaComponent} from "./modificar-cuenta/modificar-cuenta.component";
 import {ChatsComponent} from "./chats/chats.component";
+import {ResponderComponent} from "./responder/responder.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full", canActivate: [AuthGuardLogged] },
@@ -20,4 +21,5 @@ export const routes: Routes = [
   { path: "modificarPropiedad/:id", component:ModificarPropiedadComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "modificarCuenta/:id", component:ModificarCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "chats", component:ChatsComponent,pathMatch:"full", canActivate: [AuthGuard] },
+  { path: "preguntas", component:ResponderComponent,pathMatch:"full", canActivate: [AuthGuard] },
 ];

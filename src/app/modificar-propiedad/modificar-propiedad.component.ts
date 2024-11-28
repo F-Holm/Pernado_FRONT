@@ -129,7 +129,7 @@ export class ModificarPropiedadComponent implements OnInit {
   }
 
   constructor(private  propiedadService: PropiedadApiService,  private route: ActivatedRoute,private fb: FormBuilder,private router: Router
-  ) {    
+  ) {
   }
   ngOnInit(): void {
     this.cargarPropiedad();
@@ -198,18 +198,18 @@ export class ModificarPropiedadComponent implements OnInit {
       this.actualizarMunicipios(this.propiedad.ubicacion.provincia);
     });
   }
-  
+
   onSubmit() {
     const propiedadData = {
       ...this.propiedadForm.value,
       id: this.propiedad.id,
       duenio: this.propiedad.duenio,
-      preguntas: [],
+      preguntas: this.propiedad.preguntas,
     };
 
 
     const imagenesNuevas:string[]= this.nombreImagenes();
-   
+
 
     const formData: FormData = new FormData();
 
