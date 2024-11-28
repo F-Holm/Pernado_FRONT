@@ -4,53 +4,54 @@
     <div class="carousel">
       <!-- Imagen actual -->
       <img [src]="getImagen(imagenActual)" alt="Imagen de propiedad" class="carousel-image">
-  
+
       <!-- Botones para pasar de imagen -->
       <button (click)="anteriorImagen()" class="carousel-button">Anterior</button>
       <button (click)="siguienteImagen()" class="carousel-button">Siguiente</button>
     </div>
 </div>
-  
+
   <!-- Mensaje si no hay imágenes -->
   <div *ngIf="propiedad.imagenes == null || propiedad.imagenes.length == 0">
     <p>No hay imágenes disponibles para esta propiedad.</p>
   </div>
 
-<button [routerLink]="['/chats']" (click)="contactar()">Contactar</button>
+<button (click)="contactar()">Contactar</button>
+
 <div class="propiedad-info">
     <!-- Estado de la propiedad (alquiler o venta) -->
     <h1 *ngIf="propiedad.alquiler" class="estado">En alquiler</h1>
     <h1 *ngIf="!propiedad.alquiler" class="estado">En venta</h1>
-  
+
     <!-- Precio -->
     <p class="precio">{{ propiedad.precio | currency }}</p>
-  
+
     <!-- Tipo de propiedad y expensas -->
     <p class="tipo-propiedad">Tipo de propiedad: {{ propiedad.tipoPropiedad }}</p>
     <p class="expensas">Expensas: {{ propiedad.expensas | currency }}</p>
-  
+
     <!-- Descripción -->
     <p class="descripcion">{{ propiedad.descripcion }}</p>
-  
- 
+
+
     <!-- m² Cubiertos -->
     <p class="m2-cubiertos">m² Cubiertos: {{ propiedad.caracteristicas.m2Cubiertos }}</p>
-  
+
     <!-- m² Terreno -->
     <p class="m2-terreno">m² Terreno: {{ propiedad.caracteristicas.m2Totales }}</p>
-  
+
     <!-- Ambientes -->
     <p class="ambientes">Ambientes: {{ propiedad.caracteristicas.cantidadAmbientes }}</p>
-  
+
     <!-- Baños -->
     <p class="banios">Baños: {{ propiedad.caracteristicas.cantidadBanios }}</p>
-  
+
     <!-- Dormitorios -->
     <p class="dormitorios">Dormitorios: {{ propiedad.caracteristicas.cantidadDormitorios }}</p>
-  
+
     <!-- Año de construcción o remodelación -->
     <p class="anio">Año de construcción/remodelación: {{ propiedad.caracteristicas.anioConstruccionRemodelacion }}</p>
-  
+
     <!-- Otros datos -->
     <p class="otros">Cantidad de plantas: {{ propiedad.caracteristicas.cantidadPlantas }}</p>
     <p class="otros">Cantidad de garages: {{ propiedad.caracteristicas.cantidadGarages }}</p>
@@ -66,8 +67,8 @@
       <p *ngIf="propiedad.caracteristicas.seguridad">Seguridad: Sí</p>
     </div>
   </div>
-  
-  
+
+
   <div class="ubicacion-info">
     <h2>Ubicación</h2>
     <p class="direccion">{{ propiedad.ubicacion.direccion }}</p>
@@ -76,5 +77,5 @@
     <p class="codigo-postal">Código Postal: {{ propiedad.ubicacion.codigoPostal }}</p>
     <app-mapa [direccion]="dirCompleta(propiedad.ubicacion)"></app-mapa>
   </div>
-  
-  
+
+

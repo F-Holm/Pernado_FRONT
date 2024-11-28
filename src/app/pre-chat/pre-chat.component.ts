@@ -19,22 +19,24 @@ export class PreChatComponent implements OnInit {
 
   ngOnInit() {
     this.cargarNombreContacto();
-    this.setUltimoMsg();
   }
 
   setUltimoMsg(): void {
     const ult: number = this.chat.mensajes.length -1;
-    this.ultimoMsg = this.getNombre(ult) + ': ' + this.chat.mensajes[ult].contenido;
+    if (ult >= 0) this.ultimoMsg = this.getNombre(ult) + ': ' + this.chat.mensajes[ult].contenido;
+    else this.ultimoMsg = this.contacto;
   }
 
   cargarNombreContacto(): void {
     if (this.usuario == this.chat.comprador) {
       this.usuarioService.getNombreUsuario(this.chat.vendedor).subscribe((data: any) => {
         this.contacto = data.nombreUsuario;
+        this.setUltimoMsg();
       })
     } else {
       this.usuarioService.getNombreUsuario(this.chat.comprador).subscribe((data: any) => {
         this.contacto = data.nombreUsuario;
+        this.setUltimoMsg();
       })
     }
   }
