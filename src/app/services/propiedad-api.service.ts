@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { IPropiedad } from '../../models/Propiedad';
 import {IFiltrosPropiedad} from "../../models/FiltrosPropiedad";
+import {IPregunta} from "../../models/Pregunta";
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,15 @@ export class PropiedadApiService {
   }
 
   getCantPropiedades(): any {
-    return (this.http.get<any>(this.BASE_URL + "/cant"));
+    return (this.http.get<any>(this.BASE_URL + '/cant'));
   }
 
   getPropiedadesUsuarios(idUsuario: number): any {
-    return (this.http.get<any>(this.BASE_URL + "/usuario/" + idUsuario));
+    return (this.http.get<any>(this.BASE_URL + '/usuario/' + idUsuario));
+  }
+
+  getPropiedadesUsuariosToken(): any {
+    return (this.http.get<any>(this.BASE_URL + '/usuario'));
   }
 
   getPropiedadesFiltros(query: any): any {
@@ -32,7 +37,7 @@ export class PropiedadApiService {
   }
 
   getPropiedadesFiltrosLimitSkip(query: any, limit: number, skip: number): any {
-    return (this.http.post<any>(this.BASE_URL + '/filteredls', { "query": query, "limit": limit, "skip": skip }));
+    return (this.http.post<any>(this.BASE_URL + '/filteredls', { 'query': query, 'limit': limit, 'skip': skip }));
   }
 
   getPropiedad(id: number): any {
@@ -41,6 +46,10 @@ export class PropiedadApiService {
 
   postPropiedad(propiedad: IPropiedad): any {
     return (this.http.post<any>(this.BASE_URL, { "propiedad": propiedad }));
+  }
+
+  postPregunta(pregunta: string, idPropiedad: number): any {
+    return (this.http.post<any>(this.BASE_URL + '/preguntar', { "pregunta": pregunta, "idPropiedad": idPropiedad }));
   }
 
   postImg(formData: FormData): any {

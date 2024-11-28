@@ -1,0 +1,23 @@
+<div id="preguntas" *ngFor="let pregunta of preguntas">
+  <p id="pregun">Preguntas:</p>
+  <p>{{ pregunta.texto }}</p>
+  <p>{{ pregunta.respuesta }}</p>
+</div>
+<div id="newPregunta">
+  <p>Ingrese sus dudas</p>
+  <form (ngSubmit)="preguntar()" #preguntaForm="ngForm">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="mensaje"
+        name="mensaje"
+        [(ngModel)]="preg"
+        placeholder="Escribe tus dudas"
+        required
+        minlength="1"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!preguntaForm.valid">Enviar</button>
+  </form>
+</div>

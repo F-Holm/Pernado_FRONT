@@ -1,0 +1,21 @@
+<div *ngIf="preguntaSinResponder != -1">
+  <p id="titulo">Título: {{ propiedad.titulo }}</p>
+  <p>Pregunta: {{ propiedad.preguntas[preguntaSinResponder].texto }}</p>
+  <div id="newPregunta">
+    <form (ngSubmit)="responder()" #respuestaForm="ngForm">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="mensaje"
+          name="mensaje"
+          [(ngModel)]="respuesta"
+          placeholder="Escribe tu respuesta"
+          required
+          minlength="1"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!respuestaForm.valid">Enviar</button>
+    </form>
+  </div>
+</div>
