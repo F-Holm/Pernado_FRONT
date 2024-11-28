@@ -61,7 +61,7 @@ export class PropiedadComponent implements OnInit {
   contactar() {
     if(this.auth.loggedIn()){
     
-    
+    alert('Contactando con el propietario');
     }else{
       alert('Debe iniciar sesion para contactar con el propietario');
     }
