@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IPropiedad } from '../../models/Propiedad';
+import Propiedad, { IPropiedad } from '../../models/Propiedad';
 import { PropiedadApiService } from '../services/propiedad-api.service';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -22,7 +22,6 @@ export class CatalogoComponent implements OnInit {
   mostrarFiltros: boolean = false;
   query: any = {};
   busqueda: string = '';
-
   defaultImage: string = 'assets/image.png';
 
   constructor(private propiedadService: PropiedadApiService, private fb: FormBuilder) {}
@@ -32,6 +31,11 @@ export class CatalogoComponent implements OnInit {
     this.obtener();
     this.setForm();
   }
+
+  getImagen(propiedad: IPropiedad){
+    return  Propiedad.getImg(propiedad, 0);
+  }
+        
 
   btnFiltros(): void {
     this.mostrarFiltros = !this.mostrarFiltros;
@@ -53,6 +57,7 @@ export class CatalogoComponent implements OnInit {
       }
     );
   }
+  
 
   siguientePagina(): void{
     if (this.cant > this.indice + this.imagenesMostradasPorPagina) this.indice += this.imagenesMostradasPorPagina;

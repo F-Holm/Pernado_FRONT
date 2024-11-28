@@ -1,1 +1,144 @@
-<p>modificar-cuenta works!</p>
+<form id="formulario" class="todo" [formGroup]="registerForm" (ngSubmit)="actualizarCuenta()">
+    <div class="form-group">
+      <h5>Actualizar datos de usuario</h5>
+    </div>
+  
+    <!-- DNI -->
+    <div class="form-group">
+      <label for="dni">DNI</label>
+      <input
+        name="dni"
+        type="number"
+        class="form-control"
+        id="dni"
+        formControlName="dni"
+      />
+    </div>
+  
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        name="email"
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+  
+    <!-- Teléfono -->
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input
+        name="telefono"
+        type="text"
+        class="form-control"
+        id="telefono"
+        formControlName="telefono"
+      />
+    </div>
+  
+    <!-- Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        name="nombre"
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+      />
+    </div>
+  
+    <!-- Apellido -->
+    <div class="form-group">
+      <label for="apellido">Apellido</label>
+      <input
+        name="apellido"
+        type="text"
+        class="form-control"
+        id="apellido"
+        formControlName="apellido"
+      />
+    </div>
+  
+    <!-- Nombre de Usuario -->
+    <div class="form-group">
+      <label for="nombreUsuario">Nombre de Usuario</label>
+      <input
+        name="nombreUsuario"
+        type="text"
+        class="form-control"
+        id="nombreUsuario"
+        formControlName="nombreUsuario"
+      />
+    </div>
+  
+    <!-- Fecha de Nacimiento -->
+    <div class="form-group">
+      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input
+        name="fechaNacimiento"
+        type="date"
+        class="form-control"
+        id="fechaNacimiento"
+        formControlName="fechaNacimiento"
+      />
+    </div>
+  
+    <!-- Dirección -->
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input
+        name="direccion"
+        type="text"
+        class="form-control"
+        id="direccion"
+        formControlName="direccion"
+      />
+    </div>
+  
+    <div class="form-group">
+      <div class="form-field">
+        <label for="provincia">Provincia:</label>
+        <select id="provincia" formControlName="provincia" (change)="actualizarMunicipios($any($event.target).value)">
+          <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="municipio">Municipio:</label>
+        <select id="municipio" formControlName="municipio">
+          <option *ngFor="let municipio of municipios" [value]="municipio">{{municipio}}</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Piso/Departamento -->
+    <div class="form-group">
+      <label for="piso_departamento">Piso/Departamento</label>
+      <input
+        name="piso_departamento"
+        type="text"
+        class="form-control"
+        id="piso_departamento"
+        formControlName="piso_departamento"
+      />
+    </div>
+  
+    <!-- Código Postal -->
+    <div class="form-group">
+      <label for="codigoPostal">Código Postal</label>
+      <input
+        name="codigoPostal"
+        type="number"
+        class="form-control"
+        id="codigoPostal"
+        formControlName="codigoPostal"
+      />
+    </div>
+  
+    <!-- Botón de envío -->
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+  </form>
+  

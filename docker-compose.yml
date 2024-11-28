@@ -2,11 +2,11 @@
 services:
   # Servicio para la aplicación Angular (con Nginx)
   frontend:
-    #image: ghcr.io/f-holm/pernado_front:main
-    image: front
+    image: ghcr.io/f-holm/pernado_front:dev
+    #image: front
     container_name: angular_frontend
     ports:
-      - "80:80"  # Exponemos el puerto 80 del contenedor al 80 del host
+      - "8080:80"  # Exponemos el puerto 80 del contenedor al 80 del host
     networks:
       - backend_network  # El frontend se conecta a la red backend_network
     depends_on:
@@ -14,13 +14,13 @@ services:
 
   # Servicio para la API Express
   backend:
-    #image: ghcr.io/f-holm/pernado_back:main
-    image: back
+    image: ghcr.io/f-holm/pernado_back:dev
+    #image: back
     container_name: express_backend
     ports:
       - "3000:3000"  # Exponemos el puerto 3000 del contenedor al 3000 del host
     environment:
-      - MONGO_URI=mongodb://mongo:27017/mi_basededatos  # Conexión con la base de datos MongoDB
+      - MONGO_URI=mongodb://mongo:27017/Pernado  # Conexión con la base de datos MongoDB
     networks:
       - backend_network  # Conexión con la red backend_network
     depends_on:
