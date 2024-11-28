@@ -10,6 +10,7 @@ import {ModificarPropiedadComponent} from "./modificar-propiedad/modificar-propi
 import {ModificarCuentaComponent} from "./modificar-cuenta/modificar-cuenta.component";
 import {ChatsComponent} from "./chats/chats.component";
 import {ResponderComponent} from "./responder/responder.component";
+import {UsuariosComponent} from "./usuarios/usuarios.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full", canActivate: [AuthGuardLogged] },
@@ -22,4 +23,5 @@ export const routes: Routes = [
   { path: "modificarCuenta/:id", component:ModificarCuentaComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "chats", component:ChatsComponent,pathMatch:"full", canActivate: [AuthGuard] },
   { path: "preguntas", component:ResponderComponent,pathMatch:"full", canActivate: [AuthGuard] },
+  { path: "usuarios", component:UsuariosComponent,pathMatch:"full", canActivate: [AuthGuard] },
 ];
