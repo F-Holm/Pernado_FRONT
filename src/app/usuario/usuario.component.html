@@ -1,0 +1,79 @@
+<!-- usuario.component.html -->
+<div *ngIf="usuario">
+  <h2>Detalles del Usuario</h2>
+
+  <div *ngIf="!isEditing">
+    <!-- Mostrar los datos del usuario -->
+    <p><strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ usuario.fechaNacimiento }}</p>
+
+    <p><strong>Dirección:</strong></p>
+    <p><strong>Provincia:</strong> {{ usuario.direccion.provincia }}</p>
+    <p><strong>Municipio:</strong> {{ usuario.direccion.municipio }}</p>
+    <p><strong>Dirección:</strong> {{ usuario.direccion.direccion }}</p>
+    <p><strong>Piso/Departamento:</strong> {{ usuario.direccion.piso_departamento }}</p>
+    <p><strong>Código Postal:</strong> {{ usuario.direccion.codigoPostal }}</p>
+
+    <!-- Botones de acción -->
+    <button (click)="onEdit()">Modificar</button>
+    <button (click)="onDelete()">Eliminar</button>
+  </div>
+
+  <!-- Mostrar formulario de edición -->
+  <div *ngIf="isEditing">
+    <form (ngSubmit)="onSave()">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required />
+      </div>
+      <div>
+        <label for="apellido">Apellido:</label>
+        <input id="apellido" [(ngModel)]="usuario.apellido" name="apellido" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" [(ngModel)]="usuario.email" name="email" required type="email" />
+      </div>
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input id="telefono" [(ngModel)]="usuario.telefono" name="telefono" required />
+      </div>
+      <div>
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input id="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" name="fechaNacimiento" type="date" />
+      </div>
+
+      <div>
+        <label for="provincia">Provincia:</label>
+        <select id="provincia" [(ngModel)]="usuario.direccion.provincia" name="provincia" required (change)="actualizarMunicipios($any($event.target).value)">
+          <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="municipio">Municipio:</label>
+        <select id="municipio" [(ngModel)]="usuario.direccion.municipio" name="municipio" required>
+          <option *ngFor="let municipio of municipios" [value]="municipio">{{ municipio }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="direccion">Dirección:</label>
+        <input id="direccion" [(ngModel)]="usuario.direccion.direccion" name="direccion" required />
+      </div>
+      <div>
+        <label for="piso_departamento">Piso/Departamento:</label>
+        <input id="piso_departamento" [(ngModel)]="usuario.direccion.piso_departamento" name="piso_departamento" />
+      </div>
+      <div>
+        <label for="codigoPostal">Código Postal:</label>
+        <input id="codigoPostal" [(ngModel)]="usuario.direccion.codigoPostal" name="codigoPostal" type="number" required />
+      </div>
+
+      <!-- Botón para guardar cambios -->
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+</div>
