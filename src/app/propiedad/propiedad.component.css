@@ -94,3 +94,60 @@
     margin-bottom: 15px;
   }
   
+  /* CSS para el componente de ubicación */
+.ubicacion-info {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.ubicacion-info h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 5px;
+}
+
+.ubicacion-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #555;
+}
+
+.ubicacion-info .direccion,
+.ubicacion-info .piso-departamento,
+.ubicacion-info .municipio,
+.ubicacion-info .codigo-postal {
+  padding-left: 10px;
+  position: relative;
+}
+
+.ubicacion-info .direccion::before,
+.ubicacion-info .piso-departamento::before,
+.ubicacion-info .municipio::before,
+.ubicacion-info .codigo-postal::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #007BFF;
+}
+
+.ubicacion-info .codigo-postal {
+  font-weight: bold;
+}
+
+app-mapa {
+  display: block;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 300px;
+}

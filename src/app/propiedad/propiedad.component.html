@@ -16,6 +16,7 @@
     <p>No hay imágenes disponibles para esta propiedad.</p>
   </div>
 
+<button [routerLink]="['/chats']" (click)="contactar()">Contactar</button>
 <div class="propiedad-info">
     <!-- Estado de la propiedad (alquiler o venta) -->
     <h1 *ngIf="propiedad.alquiler" class="estado">En alquiler</h1>
