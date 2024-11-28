@@ -27,7 +27,7 @@
       <li><strong>Metros Totales:</strong> {{ propiedad.caracteristicas.m2Totales }} m²</li>
 
       <button [routerLink]="['/modificarPropiedad', propiedad.id]" class="btn btn-primary">Editar Propiedad</button>
-     <!-- <button [routerLink]="['/miCuenta']" class="btn btn-primary" (click)="borrarPropiedad(propiedad.id)">Borrar Propiedad</button>
-    --></div>
+     <button  class="btn btn-primary" [routerLink]="['/mi-cuenta']"(click)="borrarPropiedad(propiedad.id)">Borrar Propiedad</button>
+    </div>
   </div>
 

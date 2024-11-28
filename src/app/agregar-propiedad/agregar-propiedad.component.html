@@ -39,6 +39,47 @@
         </ul>
       </div>
 
+      
+    <!-- Provincia y Municipio -->
+    <div class="form-group"formGroupName="ubicacion">
+      <div class="form-field">
+        <label for="provincia">Provincia:</label>
+        <select id="provincia" formControlName="provincia" (change)="actualizarMunicipios($any($event.target).value)">
+          <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
+        </select>
+      </div> 
+      <div class="form-field">
+        <label for="municipio">Municipio:</label>
+        <select id="municipio" formControlName="municipio">
+          <option *ngFor="let municipio of municipios" [value]="municipio">{{municipio}}</option>
+        </select>
+        
+      </div>
+    </div>
+
+    <!-- Dirección -->
+    <div class="form-group"formGroupName="ubicacion">
+      <div class="form-field">
+        <input id="direccion" formControlName="direccion" placeholder="Direccion" />
+        <div *ngIf="propiedadForm.get('direccion')?.touched && propiedadForm.get('direccion')?.invalid">
+          <small *ngIf="propiedadForm.get('direccion')?.errors?.['required']">La dirección es obligatoria.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <input id="piso_departamento" formControlName="piso_departamento" placeholder="Piso / Departamento" />
+      </div>
+    </div>
+
+    <!-- Código Postal -->
+    <div class="form-group"formGroupName="ubicacion">
+      <div class="form-field">
+        <input id="codigoPostal" formControlName="codigoPostal" placeholder="Codigo postal" />
+          <div *ngIf="propiedadForm.get('codigoPostal')?.touched && propiedadForm.get('codigoPostal')?.invalid">
+            <small *ngIf="propiedadForm.get('codigoPostal')?.errors?.['required']">El código postal es obligatorio.</small>
+          </div>
+      </div>
+    </div>
+
       <!-- Características -->
       <div formGroupName="caracteristicas">
         <label for="cantidadAmbientes">Cantidad de Ambientes</label>
@@ -89,10 +130,8 @@
         <label for="seguridad">Seguridad</label>
         <input type="checkbox" id="seguridad" formControlName="seguridad">
 
-        <label for="mascotas">Mascotas Permitidas</label>
-        <input type="checkbox" id="mascotas" formControlName="mascotas">
       </div>
 
-      <button type="submit" [disabled]="propiedadForm.invalid">Enviar</button>
+      <button type="submit" >Enviar</button>
     </form>
   </div>

@@ -39,7 +39,7 @@ export class PropiedadApiService {
     return (this.http.get<any>(this.BASE_URL + '/' + id));
   }
 
-  postPropiedad(propiedad: IPropiedad, imagenes: File[]): any {
+  postPropiedad(propiedad: IPropiedad): any {
     return (this.http.post<any>(this.BASE_URL, { "propiedad": propiedad }));
   }
 

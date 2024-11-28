@@ -68,5 +68,23 @@ export class MiCuentaComponent implements OnInit {
     }
   
   }
+  borrarPropiedad(id:number){
+     // Bucle que fuerza al usuario a escribir la contraseña
+     const confirmarBorrado = confirm('¿Estás seguro de que deseas borrar tu propiedad?');
+    console.log(id);
+     if (confirmarBorrado) {
+       // Si el usuario acepta, proceder a borrar la cuenta
+       alert('¡Gracias! Ahora podemos proceder con la eliminación.');
+   
+       // Eliminar usuario y hacer logout
+       this.propiedadService.deletePropiedad(id).subscribe((data: any) => {
+          
+          this.cargarPropiedades();
+       });
+     } else {
+       // Si el usuario cancela, le mostramos un mensaje y no hacemos nada
+       alert('Eliminación cancelada. No se ha borrado tu propiedad.');
+     }
+  }
   
 }
