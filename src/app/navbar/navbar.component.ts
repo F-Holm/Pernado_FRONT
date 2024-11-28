@@ -30,6 +30,9 @@ export class NavbarComponent {
   public inicio(): void{
     this.router.navigate(['/']);
   }
+  public preguntas(): void{
+    this.router.navigate(['/preguntas']);
+  }
 
   public miCuenta(): void{
     this.router.navigate(['/mi-cuenta']);
