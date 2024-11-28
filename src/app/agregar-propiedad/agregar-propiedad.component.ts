@@ -116,7 +116,7 @@ export class AgregarPropiedadComponent implements OnInit {
     console.log(formData.get('img'))
 
     if (this.propiedadForm.valid) {
-      this.propiedadService.postPropiedad(propiedadData as IPropiedad, this.selectedImages).subscribe(() => {
+      this.propiedadService.postPropiedad(propiedadData as IPropiedad).subscribe(() => {
         console.log('Propiedad agregada con éxito');
         this.propiedadService.postImg(formData).subscribe(() => {
           this.router.navigateByUrl('/');
