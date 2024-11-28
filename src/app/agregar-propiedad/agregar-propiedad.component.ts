@@ -46,7 +46,7 @@ export class AgregarPropiedadComponent  {
   selectedImages: File[] = [];
   provincias: any[] = Object.values(Provincias);
   municipios: any[] = [];
- 
+
   constructor(
     private fb: FormBuilder,
     private propiedadService: PropiedadApiService,
@@ -66,7 +66,7 @@ export class AgregarPropiedadComponent  {
         municipio: ['', Validators.required],
         direccion: ['', Validators.required],
         piso_departamento: [''],
-        codigoPostal: [0, Validators.required]
+        codigoPostal: [undefined, Validators.required]
       }),
       caracteristicas: this.fb.group({
         cantidadAmbientes: [0, Validators.required],
@@ -86,11 +86,11 @@ export class AgregarPropiedadComponent  {
         gimnasio: [false],
         seguridad: [false]
       })
-    
+
     });
   }
 
- 
+
 
   actualizarMunicipios(provincia: string): void {
     switch (provincia) {
@@ -169,7 +169,7 @@ export class AgregarPropiedadComponent  {
         break;
     }
   }
- 
+
   onImageSelected(event: any) {
     const files = event.target.files;
     this.selectedImages = [];
@@ -195,8 +195,8 @@ export class AgregarPropiedadComponent  {
       duenio: null,
       preguntas: [],
     };
-    
-   
+
+
 
     propiedadData.imagenes = this.nombreImagenes();
 
