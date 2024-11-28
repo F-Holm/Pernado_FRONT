@@ -31,6 +31,7 @@ export class UsuarioApiService {
   }
 
   putUsuario(usuario: IUsuario): any {
+    console.log("hola");
     return (this.http.put<any>(this.BASE_URL, { "usuario" : usuario }));
   }
 

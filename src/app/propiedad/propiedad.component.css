@@ -1,0 +1,96 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .carousel-button:first-child {
+    left: 10px;
+  }
+  
+  .carousel-button:last-child {
+    right: 10px;
+  }
+  .propiedad-info {
+    display: flex;
+    flex-direction: column-reverse; /* Invierte el orden de los elementos */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .propiedad-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .estado {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .precio {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .tipo-propiedad,
+  .expensas,
+  .descripcion,
+  .m2-totales,
+  .m2-cubiertos,
+  .m2-terreno,
+  .ambientes,
+  .banios,
+  .dormitorios,
+  .anio,
+  .otros {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .caracteristicas p {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .descripcion {
+    font-size: 14px;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+  
