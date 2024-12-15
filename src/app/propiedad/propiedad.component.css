@@ -1,153 +1,140 @@
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-  }
-  
-  .carousel-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .carousel-button:first-child {
-    left: 10px;
-  }
-  
-  .carousel-button:last-child {
-    right: 10px;
-  }
-  .propiedad-info {
-    display: flex;
-    flex-direction: column-reverse; /* Invierte el orden de los elementos */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .propiedad-info p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .estado {
-    font-size: 18px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .precio {
-    font-size: 22px;
-    font-weight: bold;
-    color: #000;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .tipo-propiedad,
-  .expensas,
-  .descripcion,
-  .m2-totales,
-  .m2-cubiertos,
-  .m2-terreno,
-  .ambientes,
-  .banios,
-  .dormitorios,
-  .anio,
-  .otros {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .caracteristicas p {
-    font-size: 14px;
-    color: #444;
-  }
-  
-  .descripcion {
-    font-size: 14px;
-    color: #777;
-    font-style: italic;
-    margin-bottom: 15px;
-  }
-  
-  /* CSS para el componente de ubicación */
-.ubicacion-info {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+/* Contenedor principal */
+.main-info {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.ubicacion-info h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #007BFF;
-  padding-bottom: 5px;
+/* Título centrado */
+.titulo {
+  text-align: center;
+  font-size: 2em;
+  margin: 20px 0;
 }
 
-.ubicacion-info p {
-  font-size: 1rem;
-  line-height: 1.5;
+/* Título, precio y descripción más grandes */
+h2, .precio, .descripcion {
+  font-size: 1.5em;
   margin: 10px 0;
-  color: #555;
 }
 
-.ubicacion-info .direccion,
-.ubicacion-info .piso-departamento,
-.ubicacion-info .municipio,
-.ubicacion-info .codigo-postal {
-  padding-left: 10px;
-  position: relative;
+/* Contenedor de columnas */
+.propiedad-info-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.ubicacion-info .direccion::before,
-.ubicacion-info .piso-departamento::before,
-.ubicacion-info .municipio::before,
-.ubicacion-info .codigo-postal::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #007BFF;
+/* Estilo de columnas */
+.column {
+  flex: 1;
+  margin: 10px;
+  min-width: 250px; /* Ancho mínimo de la columna */
 }
 
-.ubicacion-info .codigo-postal {
-  font-weight: bold;
+/* Imagen y mapa */
+.img-container {
+  max-width: 50%;
+  margin: auto;
 }
 
-app-mapa {
+.mapa {
+  width: 100%; /* Ajustar el ancho al 100% del contenedor */
+  height: auto;
+  display: block; /* Asegurarse de que el contenedor del mapa sea un bloque */
+}
+
+/* Carousel */
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.carousel-image {
+  z-index: 1000;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out; /* Transición para el efecto de zoom */
+}
+
+/* Efecto de zoom en la imagen */
+.carousel-image.zoomable:active {
+  transform: scale(1.5); /* Escalar al 150% cuando se haga clic */
+}
+
+/* Botones del carousel con más estilo */
+.carousel-button {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px; /* Agregar bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+  transform: scale(1); /* Escala inicial */
+}
+
+.carousel-button:hover {
+  background-color: #333;
+  color: #fff;
+  transform: scale(1.1); /* Escala al pasar el ratón */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Botón anterior a la izquierda */
+.anterior {
+  margin-right: 10px;
+}
+
+/* Botón siguiente a la derecha */
+.siguiente {
+  margin-left: 10px;
+}
+
+/* Botón contactar */
+.contactar-btn {
   display: block;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 300px;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px; /* Agregar bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Transición para hover */
+}
+
+.contactar-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05); /* Escala al pasar el ratón */
+}
+
+/* Contenedor de ubicación */
+.ubicacion-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.ubicacion-info {
+  flex: 1;
+  min-width: 250px; /* Ancho mínimo de la columna */
+}
+
+.mapa {
+  flex: 1;
+  max-width: 100%; /* Asegurar que el mapa ocupe el 100% del espacio disponible */
+  margin-left: -15%;
 }
