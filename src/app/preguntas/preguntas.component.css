@@ -1,0 +1,269 @@
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  h2, h3, h4 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+  
+  /* Títulos principales */
+  h2 {
+    font-size: 2.5em;
+    color: #2980b9;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  
+  h3 {
+    font-size: 1.8em;
+    color: #34495e;
+    margin-bottom: 15px;
+  }
+  
+  h4 {
+    font-size: 1.4em;
+    color: #16a085;
+    margin-bottom: 10px;
+  }
+  
+  /* Botones */
+  button {
+    cursor: pointer;
+    padding: 12px 20px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+    color: white;
+  }
+  
+  /* Estilos del carrusel */
+  .carousel {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .carousel-button:focus {
+    outline: none;
+  }
+  
+  .carousel-button:first-child {
+    left: 20px;
+  }
+  
+  .carousel-button:last-child {
+    right: 20px;
+  }
+  
+  /* Estilos de la información de la propiedad */
+  .propiedad-info {
+    margin-bottom: 30px;
+  }
+  
+  .estado {
+    font-size: 2em;
+    color: #27ae60;
+    font-weight: bold;
+  }
+  
+  .precio {
+    font-size: 1.5em;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .tipo-propiedad,
+  .expensas,
+  .descripcion,
+  .m2-cubiertos,
+  .m2-terreno,
+  .ambientes,
+  .banios,
+  .dormitorios,
+  .anio,
+  .otros {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+    color: #34495e;
+  }
+  
+  .tipo-propiedad {
+    color: #2980b9;
+  }
+  
+  .descripcion {
+    font-style: italic;
+    color: #7f8c8d;
+  }
+  
+  /* Estilos de las características adicionales */
+  .caracteristicas p {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #16a085;
+  }
+  
+  /* Estilos de la ubicación */
+  .ubicacion-info {
+    margin-bottom: 30px;
+  }
+  
+  .direccion,
+  .piso-departamento,
+  .municipio,
+  .codigo-postal {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  .direccion {
+    font-weight: bold;
+  }
+  
+  .municipio {
+    font-style: italic;
+  }
+  
+  /* Estilos del mapa */
+  app-mapa {
+    width: 100%;
+    height: 350px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilos del formulario de preguntas */
+  #newPregunta {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  #newPregunta h3 {
+    color: #2980b9;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input.form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+  }
+  
+  input.form-control:focus {
+    outline: none;
+    border-color: #2980b9;
+  }
+  
+  button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2ecc71;
+  }
+  
+  /* Estilos adicionales */
+  .otros {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #34495e;
+  }
+  
+  .otros span {
+    font-weight: bold;
+    color: #e74c3c;
+  }
+  
+  /* Estilo de las preguntas */
+  #preguntas {
+    margin-top: 40px;
+  }
+  
+  #pregun {
+    font-weight: bold;
+    color: #2980b9;
+    font-size: 1.3em;
+    margin-top: 15px;
+  }
+  
+  #preguntas p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #7f8c8d;
+  }
+  
+  /* Espaciado general */
+  section {
+    margin-bottom: 40px;
+  }
+  

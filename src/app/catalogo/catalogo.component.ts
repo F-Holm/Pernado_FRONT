@@ -16,7 +16,7 @@ import {IFiltrosPropiedad} from "../../models/FiltrosPropiedad";
 export class CatalogoComponent implements OnInit {
   propiedades: IPropiedad[] = [];
   indice: number = 0;
-  imagenesMostradasPorPagina: number = 20;
+  imagenesMostradasPorPagina: number = 4;
   cant: number = 0;
   filtrosForm!: FormGroup;
   mostrarFiltros: boolean = false;
